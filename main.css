@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'ethnocentric';
+  src: url('/fonts/Ethnocentric Rg.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-ethnocentric {
+  font-family: 'ethnocentric', sans-serif;
+}

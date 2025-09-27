@@ -1,0 +1,1358 @@
+*{
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+	margin:0;
+	padding:0;
+	font-weight:400;
+	font-family: 'Roboto Condensed', sans-serif;
+}	
+::selection{
+	color: white;
+	background-color: red;
+	
+}
+
+
+
+body{
+	background-color: #070707;
+	height: auto;
+		
+}
+
+
+.container-img{
+	overflow: hidden;
+}
+
+.container-img img{
+width: 80%;
+height: auto;
+}
+
+@-webkit-keyframes fade {
+    from {
+		margin-top: -50px;
+		visibility: hidden;
+		opacity: 0;
+	}
+    to {
+		margin-top: 0;
+		visibility: visible;
+		opacity: 1;
+	}
+}
+
+@keyframes fade {
+    from {
+		margin-top: -50px;
+		visibility: hidden;
+		opacity: 0;
+	}
+    to {
+		margin-top: 0;
+		visibility: visible;
+		opacity: 1;
+	}
+}
+
+.row {
+	width: 80%;
+	margin: auto auto;
+
+}
+
+.disabled {
+	cursor: not-allowed;
+}
+
+/*
+*
+*
+*
+*SECTION HEADER
+*
+*
+*
+*/
+header{
+	background-color: white;
+	border-bottom: 5px solid red;
+
+
+}
+
+header .container{
+	height: 8rem;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	
+	
+
+
+	
+}
+
+
+header .container i {
+	display: none;
+	
+}
+
+header .container .container-logo img {
+	width: 350px;
+}
+
+header .container .container-nav nav ul {
+	list-style: none;
+}
+
+header .container .container-nav nav ul li {
+	display: inline-block;
+	margin-right: 50px;
+}
+
+header .container .container-nav nav ul li:last-child {
+	margin-right: 0;
+}
+
+header .container .container-nav nav ul li a {
+	text-decoration: none;
+	color: #1a1e22;
+	font-size: 12pt;
+	font-weight: 400;
+}
+
+header .container .container-nav nav ul li a:hover{
+	color: red;
+	-webkit-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+
+header .container .container-nav nav ul li:last-child a {
+	display: block;
+	color: #fff;
+	padding: 15px 25px;
+	border-radius: 50px;
+	background-color: #eb2424;
+	
+	-webkit-transition: all 0.3s linear;
+	transition: all 0.3s linear;
+}
+
+header .container .container-nav nav ul li:last-child a:hover {
+	background-color: #d02424;
+}
+
+
+/*
+*
+*
+*
+*SECTION VIDEO
+*
+*
+*
+*/
+
+section#video {
+	height: 40rem;
+	position: relative;
+	overflow: hidden;
+}
+
+section#video .video__overlay {
+	position: absolute;
+	min-width: 100%;
+	min-height: 100%;
+	background-color: rgba(0, 0, 0, 0.87);
+	z-index: 2;
+	color: #fff;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+
+
+	
+}
+
+section#video .video__overlay .container {
+	width: 75%;
+	-webkit-animation-name: fade;
+	animation-name: fade;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+	text-align: center;
+}
+
+section#video .video__overlay .container h1 {
+	font-size: 5em;
+	font-weight: 100;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+section#video .video__overlay .container h1 b {
+	font-weight: 700;
+}
+
+section#video .video__overlay .container .subtitle {
+	display: block;
+	font-size: 1.4em;
+	font-weight: 100;
+	margin-top: 10px;
+	text-align: center;
+}
+
+section#video .video__overlay .container .subtitle i {
+	font-weight: 700;
+}
+
+section#video .video__overlay .container #countdown {
+	margin-top: 80px;
+	text-align: center;
+}
+
+section#video .video__overlay .container #countdown ul {
+	list-style: none;
+}
+
+section#video .video__overlay .container #countdown ul li {
+	background-color: #ff0000;
+	display: inline-block;
+	margin-right: 30px;
+	padding: 10px 25px;
+	vertical-align: middle;
+	font-size: 14pt;
+	border-radius: 50px;
+}
+
+section#video .video__overlay .container #countdown ul li span {
+	margin-left: 10px;
+
+}
+
+section#video .video__overlay .container #countdown ul li:last-child {
+	margin: 0;
+}
+
+section#video video {
+	position: absolute;
+	min-width: 100%;
+	min-height: 100%;
+	z-index: 1;
+}
+
+/*
+*
+*
+*
+*SECTION SEMINARIOS
+*
+*
+*
+*/
+section#seminarios {
+	padding: 2.5rem 0;
+	background-color: #EBEBEB;
+	color:white;
+	
+	
+}
+
+
+
+
+
+
+section#seminarios .slider,
+section#seminarios .slider .list-container { 
+	margin-top: 50px; 
+	background: rgb(136,136,136);
+    background: linear-gradient(45deg, rgba(136,136,136,1) 0%, rgba(226,226,226,1) 100%);
+}
+
+section#seminarios .slider h2 {
+	font-weight: 300;
+	text-transform: uppercase;
+	letter-spacing: -0.75pt;
+	padding: 1.25rem;
+	text-align: center;
+	color: black;
+}
+
+section#seminarios .slider h2 b {
+	font-weight: 700;
+	margin-right: 15px;
+	color: black;
+}
+
+section#seminarios .list-container {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	width: 100%;
+	padding:0 0 1rem 0;
+
+
+}
+
+section#seminarios .list-container li {
+	position: relative;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	text-align: center;
+	width: 19.9%;
+	color: #212121;
+
+
+
+}
+
+
+
+
+
+section#seminarios .list-container li .container-img {
+	width: 100%;
+
+}
+
+section#seminarios .list-container li .container-desc {
+	width: 100%;
+	height: 55%;
+	padding: 1.5rem;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	border-left: none;
+	border-bottom: 0;
+	background: linear-gradient(45deg, rgba(38,38,38,1) 0%, rgba(98,98,98,1) 100%);
+	text-align: center;
+	align-content: center;
+}
+
+section#seminarios .list-container li .container-img img {
+	height: auto;
+	width: 100%;
+	}
+
+section#seminarios .list-container li .container-desc h1 {
+	font-size: 24pt;
+	margin-bottom: 15px;
+	letter-spacing: -0.75pt;
+	font-weight: 700;
+	color: white;
+}
+
+section#seminarios .list-container li .container-desc span {
+	display: block;
+	width: 100%;
+	color: white;
+	background: linear-gradient(45deg, rgba(255,128,0,1) 0%, rgba(255,179,0,1) 100%);
+	padding: 0.3rem 0.1rem;
+	text-align: center;
+}
+
+section#seminarios .list-container li .container-desc span b {
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 0.9em;
+	font-weight: 300;
+
+}
+
+section#seminarios .list-container li .container-desc p {
+	margin-top: 30px;
+	text-align: center;
+	color: white;
+}
+
+
+section#seminarios .container-title h1{
+	text-align: center;
+	color: white;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 32pt;
+	background: rgb(163,0,0);
+    background: linear-gradient(45deg, rgba(255,128,0,1) 0%, rgba(255,179,0,1) 100%);
+	padding: 0.25rem;
+}
+
+section#seminarios .container-title h1 span{
+letter-spacing: -1.25pt;
+}
+section#seminarios .container-title p{
+	text-align: center;
+	color: white;
+	text-transform: uppercase;
+	font-size: 12pt;
+	padding: 1rem;
+	background-color: #131313;
+	margin-bottom: 2.5rem;
+	
+}
+
+/*
+*
+*
+*
+*SECTION JOGOS
+*
+*
+*
+*/
+
+section#jogos {
+	padding-top: 2.5rem;
+	padding-bottom: 5rem;
+	width: 80%;
+	margin-left: 10%;
+	
+}
+section#jogos h1{
+	text-align: center;
+	color: white;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 32pt;
+	background: rgb(163,0,0);
+    background: linear-gradient(45deg, rgba(163,0,0,1) 0%, rgba(255,0,0,1) 100%);
+	padding: 0.25rem;
+}
+
+section#jogos h1 span{
+letter-spacing: -1.25pt;
+}
+section#jogos p{
+	text-align: center;
+	color: white;
+	text-transform: uppercase;
+	font-size: 12pt;
+	padding: 1rem;
+	background-color: #131313;
+	margin-bottom: 2.5rem;
+	
+}
+
+section#jogos .container-grid {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+
+}
+
+section#jogos .container-grid .box {
+	width: 33.33%;
+	height: 400px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	overflow: hidden;
+}
+
+
+section#jogos .container-grid .box .content {
+	text-align: center;
+	width: 100%;
+	color: #fff;
+
+}
+
+
+
+section#jogos .container-grid .box .content ul {
+	list-style: none;
+	
+	width: 100%;
+	background-color: rgba(0,0,0,0.7);
+	padding: 1.5rem;
+	
+}
+
+section#jogos .container-grid .box .content ul li {
+	display: inline-block;
+	margin-right: 30px;
+	font-weight: 700;
+	color: #ff0000;
+
+
+}
+
+section#jogos .container-grid .box:first-of-type .content ul li {
+	font-size: 1em;
+}
+
+section#jogos .container-grid .box .content ul li:last-child {
+	margin-right: 0;
+}
+
+section#jogos .container-grid .box .content ul li b {
+	font-weight: 700;
+	margin-left: 2px;
+	color: #fff;
+}
+
+section#jogos .container-grid .box .container-specs {
+	visibility: hidden;
+	opacity: 0;
+	margin-top: 50px;
+	margin-bottom: -120px;
+	-webkit-transition: all ease-in-out 0.3s;
+	transition: all ease-in-out 0.3s;
+	
+}
+
+section#jogos .container-grid .box .container-principal {
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+section#jogos .container-grid .box:hover .container-principal {
+	opacity: 0.25;
+	
+	
+}
+section#jogos .container-grid .box:hover .container-principal::selection {
+	background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+	
+	
+}
+
+
+section#jogos .container-grid .box:hover .container-specs {
+	visibility: visible;
+	opacity: 1;
+	margin-bottom: 0;
+	
+}
+
+section#jogos .container-specs a { 
+	display: inline-block;
+	margin-right: 3%;
+	text-decoration: none;
+	color: #fff;
+}
+
+section#jogos .container-specs a:last-child {
+	margin: 0;
+}
+
+section#jogos .container-specs a i,
+section#jogos .container-specs a span {
+	display: block;
+	
+}
+
+section#jogos .container-specs a i {
+	font-size: 2em;
+	margin-bottom: 15px;
+}
+
+section#jogos .container-specs a span {
+	font-size: 0.7em;
+	text-transform: uppercase;
+}
+.jogos__logos{
+	width: 250px;
+	color: white;
+
+}
+section#toornament{
+	margin-top: 5rem;
+	background-image: url("../imgs/banner_toornament.jpg");
+	background-color: cadetblue;
+	background-size: cover;
+	width: 100%;
+	padding:8rem 0rem;
+	
+}
+section#toornament .toornament__information h1{
+	text-align: center;
+	color: white;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 32pt;
+
+
+	
+}
+section#toornament .container-title{
+	text-transform: uppercase;
+}
+section#toornament .toornament__buttons{
+
+	text-align: center;
+	margin: 2rem 1rem;
+
+}
+
+section#toornament .toornament__buttons button{
+	border: none;
+	cursor: pointer;
+	padding: 1rem 2rem;
+	background: linear-gradient(45deg, rgba(163,0,0,1) 0%, rgba(255,0,0,1) 100%);
+	text-align: center;
+	border-radius: 25px;
+	color: white;
+	margin-right: 1rem;
+	display: inline-flex;
+	
+}
+
+
+
+
+
+/*
+*
+*
+*
+*SECTION DOCUMENTOS
+*
+*
+*
+*/
+
+section#docs {
+	padding: 100px 0;
+	background-color: #0c0d10;
+	background-image: url("../imgs/docs.jpg");
+	background-size: cover;
+	background-position: center;
+
+}
+
+section#docs .container ul {
+	list-style: none;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+section#docs .container ul li {
+	width: 33%;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+section#docs .container ul li a {
+	text-decoration: none;
+	text-align: center;
+}
+
+section#docs .container ul li a i,
+section#docs .container ul li a span {
+	text-align: center;
+	color: #fff;
+}
+
+section#docs .container ul li a i {
+	font-size: 3em;
+	background-color: #ff0000;
+	padding: 25px;
+	width: 100px;
+	border-radius: 250px;
+	-webkit-transition: all .3s;
+	transition: all .3s;
+}
+
+section#docs .container ul li a i:hover {
+	background-color: #262626;
+}
+
+section#docs .container ul li a span {
+	display: block;
+	margin-top: 25px;
+	font-size: 1.5em;
+	font-weight: 300;
+}
+#docs .container h1{
+	text-align: center;
+	color: white;
+	font-size: 32pt;
+	font-weight: 700;
+	padding-bottom: 5rem;
+	
+}
+
+#docs h1{
+	text-transform: uppercase;
+}
+/*
+*
+*
+*
+*SECTION CONTATOS
+*
+*
+*
+*/
+
+section#contatos {
+	padding: 5rem 0;
+	color: white;
+	background-color: #070707;
+	
+}
+
+section#contatos h1 {
+	font-size: 3em;
+	text-align: center;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+
+
+section#contatos p {
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: 300;
+	font-size: 12pt;
+}
+
+section#contatos ul {
+	margin-top: 50px;
+	list-style: none;
+	text-align: center;
+}
+
+section#contatos ul li {
+	display: inline-block;
+	margin-right: 35px;
+}
+
+section#contatos ul li a {
+	text-decoration: none;
+	color: white;
+	font-size: 24pt;
+}
+
+section#contatos ul li a i {
+	margin-right: 5px;
+	color: #ff0000;
+	vertical-align: middle;
+
+}
+
+section#contatos ul li a span {
+	vertical-align: bottom;
+}
+
+
+.btn-inscricao {
+    display: inline-block;
+    background-color: #ff0000;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px; /* Tamanho da fonte */
+    font-weight: 700; /* Peso da fonte */
+    text-transform: uppercase; /* Transforma o texto em mai�sculas */
+    margin-top: 50px; /* Espa�amento superior */
+}
+
+.btn-inscricao:hover {
+    background-color: #0056b3; /* Cor de fundo do bot�o ao passar o mouse */
+}
+
+
+.inscricao-icon {
+     margin-bottom: 10px; /* Espa�amento entre o �cone e o texto "Inscreva-se" */
+}
+
+.inscricao-icon i {
+    margin-right: 5px; /* Espa�amento entre o �cone e o texto "Inscreva-se" */
+    font-size: 24px; /* Ajuste o tamanho do �cone de inscri��o */
+}	
+
+
+/*
+*
+*
+*
+*SECTION FOOTER
+*
+*
+*
+*/
+
+footer {
+	padding: 50px 0;
+	color: #fff;
+	background-color: #EBEBEB;
+}
+
+footer .container {
+	text-align: center;
+}
+footer .container img{
+	width: 25%;
+}
+footer .container h1 {
+	text-transform: uppercase;
+	font-weight: 900;
+	letter-spacing: 3px;
+}
+
+footer .container ul {
+	list-style: none;
+	margin-top: 25px;
+}
+
+footer .container ul li {
+	display: inline-block;
+	margin-right: 30px;
+}
+
+footer .container ul li:last-child {
+	margin: 0;
+}
+
+footer .container ul li a,
+footer h2 {
+	text-decoration: none;
+	color: #101115;
+	font-weight: 400;
+	font-size: 0.7em;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+footer .container a:hover {
+	color: #ccc;
+}
+
+footer h2 a {
+	color: #eb2424;
+	color: #eb2424;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+
+.box-league { outline: 2px solid #eb2424; background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../imgs/lol.png); background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../imgs/lol.png); }
+.box-val { outline: 2px solid #eb2424; background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../play25/assets/img/games/valorant.png); background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../play25/assets/img/games/valorant.png); }
+.box-csgo 	{ outline: 2px solid #eb2424; background-size: cover;background-position: left; background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../imgs/cscolor.png); background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../imgs/cscolor.png); }
+.box-ow 	{ outline: 2px solid #eb2424; background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../imgs/tekken.jpg); background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../imgs/tekken.jpg"); }
+.box-rl 	{ outline: 2px solid #eb2424; background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../imgs/rl.jpg); background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../imgs/rl.jpg); }
+.box-pokemon 	{ outline: 2px solid #eb2424; background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../play25/assets/img/games/ptcg.png); background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../play25/assets/img/games/ptcg.png); }
+.box-fifa 	{ outline: 2px solid #eb2424; background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../imgs/fifa.jpg); background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../imgs/fifa.jpg); }
+.box-visitante 	{ outline: 2px solid #eb2424; background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../imgs/Visitante.png); background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../imgs/Visitante.png); }
+.box-dirt 	{ outline: 2px solid #eb2424; background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../imgs/drt2.jpg); background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../imgs/drt2.jpg); }
+.box-brevemente { outline: 2px solid #eb2424; background-size: cover;background-position: left; background: url(../imgs/brevemente.jpg); background: url(../imgs/brevemente.jpg); }
+
+.logos-slide img {
+  height: 50px;
+  margin: 0 40px;
+}
+
+.logos-slide {
+  white-space: nowrap;
+  animation: slide 35s infinite linear;
+}
+
+.logos {
+  overflow: hidden;
+  background: #EBEBEB;
+  padding: 60px 0;
+margin-top: 200px;
+}
+
+.logos:hover .logos-slide {
+  animation-play-state: paused;
+}
+
+
+.logos:before,
+.logos:after {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  content: "";
+  z-index: 2;
+}
+
+.logos:before {
+  left: 0;
+  background: linear-gradient(to right, transparent, white);
+}
+
+.logos:after {
+  right: 0;
+  background: linear-gradient(to left, transparent, white);
+}
+
+
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+
+@media only screen and (max-width: 1650px) {
+	
+	.row { width: 90%; }
+	
+}
+
+@media only screen and (max-width: 1650px) {
+	
+	section#jogos .container-grid .box .content h1 {
+		font-size: 2em;
+	}
+	
+	section#jogos .container-grid .box .content ul li {
+		margin-right: 15px;
+	}
+	
+}
+
+@media only screen and (max-width: 1449px) {
+	
+	section#seminarios .list-container li {
+		width: 100%;
+		margin-bottom: 0.40rem;
+		
+	}
+	
+	section#seminarios .list-container li .container-img {
+		width: 19.5%;
+	}
+
+	section#seminarios .list-container li .container-desc {
+		width: 79.5%;
+		height: auto;
+		float: left;
+	}
+	section#seminarios .list-container li .container-desc span {
+	display: block;
+	width: 100%;
+	color: white;
+	background-color: aqua;
+	padding: 0.3rem 0.1rem;
+	text-align: center;
+}
+	
+
+	
+}
+
+@media only screen and (max-width: 1422px) {
+	
+	section#jogos .container-grid .box {
+		width: 100%;
+		height: 400px;
+	}
+	
+}
+
+@media only screen and (max-width: 1250px) { 
+	
+	
+	header .container .container-logo img {
+		width: 320px;
+	}
+	
+	section#video .video__overlay .container h1 {
+		font-size: 4em;
+	}
+	
+	section#video .video__overlay .container .subtitle {
+		margin-top: 40px;
+	}
+	
+	section#video .video__overlay .container #countdown ul li {
+		margin-right: 20px;
+		padding: 5px 15px;
+		font-size: 1.2em;
+	}
+	
+	section#patrocinios .container-grid ul li,
+	section#parceiros .container-grid ul li {
+		
+	}
+	
+}
+
+@media only screen and (max-width: 1070px) {
+	
+	header .container .container-logo img {
+		width: 300px;
+	}
+	
+	header .container .container-nav nav ul li {
+		margin-right: 30px;
+	}
+	
+	section#seminarios .list-container li .container-img {
+		width: 24.5%;
+	}
+
+	section#seminarios .list-container li .container-desc {
+		width: 74.5%;
+	}
+}
+
+@media only screen and (max-width: 960px) {
+	
+	header .container {
+		height: 120px;
+	}
+	
+	header .container .container-logo img {
+		width: 300px;
+	}
+	
+	header .container .container-nav {
+		display: none;
+		position: absolute;
+		width: 100%;
+		margin-top: 230px;
+		left: 0;
+		z-index: 3;
+		background-color: #f5f5f5;
+	}
+	
+	header .container .container-nav nav ul li {
+		display: block;
+		width: 100%;
+		padding: 15px;
+	}
+	
+	header .container .container-nav nav ul li a {
+		display: block;
+		padding: 15px 25px;
+		border: 1px solid #1d2027;
+		border-radius: 3px;
+		-webkit-transition: all 0.3s;
+		transition: all 0.3s;
+	}
+	
+	header .container .container-nav nav ul li a:hover {
+		background-color: #e7e7e7;
+	}
+	
+	header .container i {
+		display: inline-block;
+		float: right;
+		font-size: 2em;
+		cursor: pointer;
+	}
+	
+	section#seminarios .list-container li .container-img {
+		display: none;
+	}
+
+	section#seminarios .list-container li .container-desc {
+		width: 100%;
+		padding: 25px;
+
+	}
+	
+	section#seminarios .list-container li .container-desc p {
+		margin-top: 10px;
+	}
+	
+	section#jogos .container-grid .box {
+		width: 100%;
+		height: 400px;
+	}
+	
+}
+
+@media only screen and (max-width: 860px) {
+	
+	section#video .video__overlay {
+		text-align: center;
+	}
+	
+	section#docs .container ul li a i {
+		font-size: 2em;
+		padding: 15px 0;
+		width: 65px;
+	}
+	
+	section#docs .container ul li a span {
+		font-size: 1.2em;
+	}
+	
+}
+
+@media only screen and (max-width: 715px) {
+	
+	section#video .video__overlay .container #countdown ul li {
+		margin-right: 10px;
+		margin-bottom: 15px;
+		padding: 5px 15px;
+		font-size: 1em;
+	}
+	
+	section#patrocinios .container-grid ul li,
+	section#parceiros .container-grid ul li {
+		height: 180px;
+	}
+	
+}
+
+@media only screen and (max-width: 660px) {
+	
+	section#contatos ul li {
+		margin-right: 0;
+		margin-bottom: 25px;
+		width: 100%;
+	}
+	
+	section#contatos ul li:last-of-type {
+		margin: 0;
+	}
+		footer .container img{
+	width: 55%;
+}
+	
+}
+
+@media only screen and (max-width: 560px) {
+	
+	header .container .container-logo img {
+		width: 300px;
+	}
+	
+	section#docs .container ul li {
+		width: 100%;
+		margin-bottom: 80px;
+	}
+	
+	section#docs .container ul li:nth-last-of-type(1) {
+		margin: 0;
+	}
+	
+	section#patrocinios,
+	section#parceiros {
+		display: none;
+	}
+	
+	section#docs {
+		margin-bottom: 150px;
+	}
+	section#toornament .toornament__buttons{
+
+	text-align: center;
+	margin: 5rem 1rem;
+
+}
+
+}
+
+
+@media only screen and (max-width: 520px) {
+	
+	
+	section#jogos .container-grid .box .container-specs {
+		margin-bottom: -170px;
+	}
+	
+	section#jogos .container-specs a {
+		margin-right: 0;
+		margin-bottom: 25px;
+		width: 32%;
+	}
+	
+	section#jogos .container-specs a:nth-last-of-type(2) {
+		margin-bottom: 0;
+	}
+	
+}
+
+@media only screen and (max-width: 440px) {
+	
+	header .container .container-logo img {
+		width: 260px;
+	}
+	
+	section#video .video__overlay .container .subtitle {
+		display: none;
+	}
+	
+	section#video .video__overlay .container h1 {
+		/*display: none;*/
+		font-size: 50px;
+	}
+	
+	section#video .video__overlay .container #countdown ul li {
+		margin-right: 0;
+		font-size: 1.7em;
+		width: 100%;
+	}
+	
+	section#video .video__overlay .container #countdown {
+		margin-top: 0;
+	}
+	
+	section#jogos .container-grid .box .content ul li {
+		font-size: 1.2em;
+	}
+	
+	section#jogos .container-specs a i {
+		font-size: 1.5em;
+	}
+	
+}
+
+@media only screen and (max-width: 400px) {
+	
+	footer .container ul li {
+		margin-right: 15px;
+	}
+	
+}
+
+@media only screen and (max-width: 355px) {
+	
+	section#jogos .container-grid .box .content h1 {
+		font-size: 1.5em;
+	}
+	
+	section#jogos .container-grid .box .content h2 {
+		font-size: 0.7em;
+	}
+	
+	section#jogos .container-grid .box .content ul li {
+		font-size: 0.8em;
+	}	
+	
+}
+
+@media only screen and (max-width: 300px) {
+	
+	section#jogos .container-grid .box .container-specs {
+		opacity: 1;
+		visibility: visible;
+		margin-bottom: 0;
+	}
+	
+}
+
+@media only screen and (max-height: 650px) and (max-width: 853px) {
+	
+	section#video {
+		height: 360px;
+	}
+	
+	section#video .video__overlay .container .subtitle {
+		margin-top: 30px;
+	}
+	section#video .video__overlay .container #countdown {
+		margin-top: 30px;
+	}
+	
+}
+
+.news{
+	
+	width: 30%;
+	height: 40rem;
+}
+.news__content{
+	padding: 3.5rem;
+
+	
+	
+}
+.news__content ul{
+	list-style: none;
+}
+.news__content ul li{
+	text-transform: uppercase;
+	background-image: url("../imgs/fifa.jpg");
+	border-left: 3px solid red;
+	
+}
+.news__content  p{
+	padding: 1.5rem 0 1.5rem 1rem;
+
+}
+.news__content h3{
+	font-size: 16pt;
+	padding: 1rem;
+	font-weight: 700;
+}
+.news__content h2{
+	font-size: 20pt;
+	padding: 1rem;
+	font-weight: 700;
+	
+}
+
+.news__content img{
+	height: 275px;
+
+
+}
+.news_content_img{
+}
+
+.news_content_description{
+	background-color: #2D2D2D;
+	width: 100%;
+	padding: 1rem;
+}
