@@ -6,20 +6,31 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="./main.css" type="text/css" rel="stylesheet">
   </head>
-  <body class="bg-gray-100 text-black flex items-center justify-center min-h-screen">
-      <header class="font-ethnocentric absolute top-5 left-5 text-2xl font-bold bg-gray-100 px-4 py-2 rounded-full shadow-lg flex items-center">
-      <p class="inline-block">PLAYNESTI</p>
-      <span class="ml-1 inline-block -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">26</span>
-      <button class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">Torneios</button>
-      <button class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">Documentação</button>
-      <button class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">Contactos</button>
-      <button class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">Inscreve-te</button>
+  <body id="top" class="bg-black-500 text-black flex items-center justify-center min-h-screen">
+    <div class="flex items-center space-x-4 ">
+      <header class="font-ethnocentric fixed top-5 left-5 text-2xl font-bold bg-gray-100 px-4 py-2 rounded-full shadow-lg flex items-center">
+        <nav class="flex items-center">
+          <a href="#top" class="flex items-center ">
+            <p class="inline-block">PLAYNESTI</p>
+            <span class="ml-1 inline-block -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">26</span>
+          </a>
+          <button class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">Torneios</button>
+          <button class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">Documentação</button>
+          <button class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">Contactos</button>
+          <button class="ml-4 inline-block -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-2 py-1 text-white hover:from-bg-gradient-to-tr hover:to-bg-gradient-to-bl transition-colors duration-300 cursor-pointer">Inscreve-te</button>
+        </nav>
       </header>
+      
+    </div>
+      <div class="text-center">
+        <h1 class="font-ethnocentric text-8xl text-black mb-4">Preparado?</h1>
+        <p class="text-black mb-8">Estamos de volta em 2026</p>
+        <a href="#inscreve-te" class="inline-block bg-gradient-to-tr from-red-600 to-red-900 text-white px-6 py-3 rounded-full shadow-lg hover:from-red-700 hover:to-red-800 transition-colors duration-300">Inscreve-te Agora</a>
+
     <div>
-      <h1 class="text-3xl decoration-3 underline decoration-pink-500 underline-offset-8 decoration-wavy hover:decoration-solid hover:underline-offset-2 transition-all duration-500 ease-in-out select-none">
-        this thing has squiggles 
-      </h1>
-      <p class="text-5xl blur-sm select-none">and this one has a blur</p>
+      <footer class="font-ethnocentric fixed bottom-5 left-5 text-sm text-gray-600">
+        &copy; 2025 NESTIUAC. Todos os direitos reservados.
+      </footer>
     </div>
   </body>
 </html>
