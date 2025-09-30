@@ -21,3 +21,14 @@
 .font-coolvetica {
   font-family: 'coolvetica', sans-serif;
 }
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+  animation-delay: 1s
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
