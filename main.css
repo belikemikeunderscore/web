@@ -22,13 +22,20 @@
   font-family: 'coolvetica', sans-serif;
 }
 
-.fade-in {
+.fade-in-right {
   opacity: 0;
-  animation: fadeIn 1s ease-in forwards;
-  animation-delay: 1s
+  transform: translateX(50px); /* start shifted to the right */
+  animation: fadeInRight 1s ease-out forwards;
+  animation-delay: 1s; /* optional delay */
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
