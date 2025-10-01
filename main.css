@@ -24,9 +24,9 @@
 
 .fade-in-right {
   opacity: 0;
-  transform: translateX(50px); /* start shifted to the right */
+  transform: translateX(50px);
   animation: fadeInRight 1s ease-out forwards;
-  animation-delay: 1s; /* optional delay */
+  animation-delay: 1s;
 }
 
 @keyframes fadeInRight {
