@@ -39,3 +39,15 @@
     transform: translateX(0);
   }
 }
+
+.menu-btn {
+  margin-left: 1rem; /* ml-4 */
+  display: inline-block;
+  transform: skewX(-9deg); /* -skew-x-9 */
+  padding: 0.25rem 0.25rem; /* px-1 py-1 */
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(135deg, #dc2626, #7f1d1d); /* approximate from-red-600 to-red-900 */
+  border-radius: 0; /* adjust if needed */
+  margin-bottom: 0.25rem; /* mb-4 */
+}

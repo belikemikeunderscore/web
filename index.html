@@ -1,82 +1,104 @@
 <!doctype html>
 <html class="scroll-smooth">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>PlayNESTI 26 | NESTIUAC</title>
-    <meta name="description" content="A Maior LAN Party de São Miguel" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="./main.css" type="text/css" rel="stylesheet">
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>PlayNESTI 26 | NESTIUAC</title>
+        <meta name="description" content="A Maior LAN Party de São Miguel" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+            src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <link href="./main.css" type="text/css" rel="stylesheet">
+    </head>
 
+    <body class="bg-black-500 text-black flex items-center min-h-screen">
+        <div class="flex items-center space-x-4">
+            <header
+                class="fixed top-5 left-5 text-2xl font-bold bg-gray-100 px-4 py-2 rounded-full shadow-lg flex items-center z-50">
 
-<body class="bg-black-500 text-black flex items-center min-h-screen">
-    <div class="flex items-center space-x-4">
-        <header
-            class="invisible md:visible fixed top-5 left-5 text-2xl font-bold bg-gray-100 px-4 py-2 rounded-full shadow-lg flex items-center">
-            <nav class="flex items-center font-ethnocentric">
-                <a href="#top" class="flex items-center">
+                <a href="#top" class="flex items-center font-ethnocentric">
                     <p class="inline-block">PLAYNESTI</p>
                     <span
                         class="ml-1 inline-block -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">26</span>
                 </a>
-                <button
-                    class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white cursor-pointer">Torneios</button>
-                <button
-                    class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white cursor-pointer">Documentação</button>
-                <button
-                    class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white cursor-pointer">Contactos</button>
-                <button
-                    class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white cursor-pointer">FAQ</button>
-                <button
-                    class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white cursor-pointer">Galeria</button>
-                <button
-                    class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white cursor-pointer">Arena</button>
-                <button
-                    class="ml-4 -skew-x-9 inline-block bg-gradient-to-tr from-red-600 to-red-900 px-2 py-1 text-white cursor-pointer">Inscreve-te</button>
-            </nav>
-        </header>
-    </div>
 
-    <video autoplay muted loop id="myVideo" class="fixed right-0 bottom-0 min-w-full min-h-full object-cover -z-10">
-        <source src="./videosite.mp4" type="video/mp4">
-    </video>
+                <button id="menu-toggle"
+                    class="ml-4 md:hidden text-white bg-gradient-to-tr from-red-600 to-red-900 px-2 py-1 rounded">
+                    ☰
+                </button>
 
-    <div id="top" class="flex flex-col md:flex-row md:items-start md:pl-40 md:pt-10 md:space-x-16 min-h-screen">
-        <div class="md:pt-10 md:pl-40 md:flex-row items-center justify-center text-center">
-            <h1 class="font-ethnocentric text-6xl md:text-7xl lg:text-8xl text-white text-shadow-lg">Preparado?</h1>
-            <p class="font-coolvetica text-center py-3 md:text-left md:text-4xl text-white mb-8 text-shadow-lg">A
-                PlayNESTI LAN Party volta em 2026 com mais <span
-                    class="typed-text underline decoration-3 md:decoration-4"></span></p>
-            <a href="#inscreve-te"
-                class="font-coolvetica inline-block bg-gradient-to-tr from-red-600 to-red-900 text-white px-6 py-3 rounded-full shadow-lg">Inscreve-te
-                Agora</a>
-
+                <nav id="menu"
+                    class="hidden md:block absolute md:static md:flex flex-col md:flex-row md:items-center md:space-x-4 font-ethnocentric absolute md:static top-16 left-0 bg-gray-100 md:bg-transparent px-4 py-2 md:p-0 rounded-lg md:rounded-none shadow-lg md:shadow-none">
+                    <button class="menu-btn">Torneios</button>
+                    <button class="menu-btn">Documentação</button>
+                    <button class="menu-btn">Contactos</button>
+                    <button class="menu-btn">FAQ</button>
+                    <button class="menu-btn">Galeria</button>
+                    <button class="menu-btn">Arena</button>
+                    <button
+                        class="menu-btn bg-gradient-to-tr from-red-600 to-red-900 px-2 py-1 text-white rounded">Inscreve-te</button>
+                </nav>
+            </header>
         </div>
-        <div id="countdown" class="pt-12 fade-in-right text-shadow-lg w-full flex flex-col items-center justify-center">
-            <ul class="flex space-x-6 font-ethnocentric text-white text-4xl text-shadow-lg">
-                <li class="flex flex-col items-center"><span class="sm:text-3xl">0</span><span
-                        class="text-base mt-1">Dias</span></li>
-                <li class="flex flex-col items-center"><span class="sm:text-3xl">0</span><span
-                        class="text-base mt-1">Horas</span></li>
-                <li class="flex flex-col items-center"><span class="sm:text-3xl">0</span><span
-                        class="text-base mt-1">Minutos</span></li>
-                <li class="flex flex-col items-center"><span class="sm:text-3xl">0</span><span
-                        class="text-base mt-1">Segundos</span></li>
-            </ul>
+
+        <video autoplay muted loop id="myVideo"
+            class="fixed right-0 bottom-0 min-w-full min-h-full object-cover -z-10">
+            <source src="./videosite.mp4" type="video/mp4">
+        </video>
+
+        <div id="top"
+            class="flex flex-col items-center justify-center text-center min-h-screen md:flex-row md:items-center md:justify-center md:space-x-16">
+            <div class="flex-1">
+                <div
+                    class="md:pt-10 md:pl-40 md:flex-row items-center justify-center text-center">
+                    <h1
+                        class="font-ethnocentric text-6xl md:text-7xl lg:text-8xl text-white text-shadow-lg">Preparado?</h1>
+                    <p
+                        class="font-coolvetica text-center py-3 md:text-left md:text-4xl text-white mb-8 text-shadow-lg">A
+                        PlayNESTI LAN Party volta em 2026 com mais <span
+                            class="typed-text underline decoration-3 md:decoration-4"></span></p>
+                    <a href="#inscreve-te"
+                        class="font-coolvetica inline-block bg-gradient-to-tr from-red-600 to-red-900 text-white px-6 py-3 rounded-full shadow-lg">Inscreve-te
+                        Agora</a>
+
+                </div>
+                <div id="countdown"
+                    class="pt-12 fade-in-right text-shadow-lg w-full flex flex-col items-center justify-center">
+                    <ul
+                        class="flex space-x-6 font-ethnocentric text-white text-4xl text-shadow-lg">
+                        <li class="flex flex-col items-center"><span
+                                class="sm:text-3xl">0</span><span
+                                class="text-base mt-1">Dias</span></li>
+                        <li class="flex flex-col items-center"><span
+                                class="sm:text-3xl">0</span><span
+                                class="text-base mt-1">Horas</span></li>
+                        <li class="flex flex-col items-center"><span
+                                class="sm:text-3xl">0</span><span
+                                class="text-base mt-1">Minutos</span></li>
+                        <li class="flex flex-col items-center"><span
+                                class="sm:text-3xl">0</span><span
+                                class="text-base mt-1">Segundos</span></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
-    <div>
-        <footer class="font-ethnocentric fixed bottom-5 left-5 text-sm text-white">
-            &copy; 2025 NESTIUAC. Todos os direitos reservados.
-        </footer>
-    </div>
-    <script src="./countdown2.js"></script>
-    <script src="./typing.js"></script>
-    </script>
-</body>
+        <div>
+            <footer
+                class="font-ethnocentric fixed bottom-5 left-5 text-sm text-white">
+                &copy; 2025 NESTIUAC. Todos os direitos reservados.
+            </footer>
+        </div>
+        <script src="./countdown2.js"></script>
+        <script src="./typing.js"></script>
+        <script>
+  // Mobile toggle logic
+  document.getElementById("menu-toggle").addEventListener("click", function () {
+    document.getElementById("menu").classList.toggle("hidden");
+  });
+</script>
+    </body>
 
 </html>
