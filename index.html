@@ -13,20 +13,30 @@
 </head>
 
 
-<body id="top" class="bg-black-500 text-black flex items-center min-h-screen">
-    <div class="flex items-center space-x-4 ">
-        <header class="fixed top-5 left-5 text-2xl font-bold bg-gray-100 px-4 py-2 rounded-full shadow-lg flex items-center">
+<body class="bg-black-500 text-black flex items-center min-h-screen">
+    <div class="flex items-center space-x-4">
+        <header
+            class="invisible md:visible fixed top-5 left-5 text-2xl font-bold bg-gray-100 px-4 py-2 rounded-full shadow-lg flex items-center">
             <nav class="flex items-center font-ethnocentric">
                 <a href="#top" class="flex items-center">
                     <p class="inline-block">PLAYNESTI</p>
-                    <span class="ml-1 inline-block -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">26</span>
+                    <span
+                        class="ml-1 inline-block -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">26</span>
                 </a>
-                <button class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">Torneios</button>
-                <button class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">Documentação</button>
-                <button class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">Contactos</button>
-                <button class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">FAQ</button>
-                <button class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">Arena</button>
-                <button class="ml-4 inline-block -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-2 py-1 text-white hover:from-bg-gradient-to-tr hover:to-bg-gradient-to-bl transition-colors duration-300 cursor-pointer">Inscreve-te</button>
+                <button
+                    class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white cursor-pointer">Torneios</button>
+                <button
+                    class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white cursor-pointer">Documentação</button>
+                <button
+                    class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white cursor-pointer">Contactos</button>
+                <button
+                    class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white cursor-pointer">FAQ</button>
+                <button
+                    class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white cursor-pointer">Galeria</button>
+                <button
+                    class="ml-4 -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white cursor-pointer">Arena</button>
+                <button
+                    class="ml-4 -skew-x-9 inline-block bg-gradient-to-tr from-red-600 to-red-900 px-2 py-1 text-white cursor-pointer">Inscreve-te</button>
             </nav>
         </header>
     </div>
@@ -35,19 +45,29 @@
         <source src="./videosite.mp4" type="video/mp4">
     </video>
 
-    <div class="pt-10 pl-40">
-        <h1 class="font-ethnocentric text-8xl text-white mb-4 text-shadow-lg">Preparado?</h1>
-        <p class="font-coolvetica text-4xl text-white mb-8 text-shadow-lg">A PlayNESTI LAN Party volta em 2026 com mais <span class="typed-text">emoção</span></p>
-        <a href="#inscreve-te" class="font-coolvetica inline-block bg-gradient-to-tr from-red-600 to-red-900 text-white px-6 py-3 rounded-full shadow-lg hover:from-red-700 hover:to-red-800 transition-colors duration-300">Inscreve-te Agora</a>
+    <div id="top" class="flex flex-col md:flex-row md:items-start md:pl-40 md:pt-10 md:space-x-16 min-h-screen">
+        <div class="md:pt-10 md:pl-40 md:flex-row items-center justify-center text-center">
+            <h1 class="font-ethnocentric text-6xl md:text-7xl lg:text-8xl text-white text-shadow-lg">Preparado?</h1>
+            <p class="font-coolvetica text-center py-3 md:text-left md:text-4xl text-white mb-8 text-shadow-lg">A
+                PlayNESTI LAN Party volta em 2026 com mais <span
+                    class="typed-text underline decoration-3 md:decoration-4"></span></p>
+            <a href="#inscreve-te"
+                class="font-coolvetica inline-block bg-gradient-to-tr from-red-600 to-red-900 text-white px-6 py-3 rounded-full shadow-lg">Inscreve-te
+                Agora</a>
 
-    </div>
-    <div id="countdown" class=" fade-in-right text-shadow-lg w-full flex flex-col items-center justify-center mb-8">
-      <ul class="flex space-x-6 font-ethnocentric text-white text-4xl text-shadow-lg">
-        <li class="flex flex-col items-center"><span class="text-6xl">0</span><span class="text-base mt-1">Dias</span></li>
-        <li class="flex flex-col items-center"><span class="text-6xl">0</span><span class="text-base mt-1">Horas</span></li>
-        <li class="flex flex-col items-center"><span class="text-6xl">0</span><span class="text-base mt-1">Minutos</span></li>
-        <li class="flex flex-col items-center"><span class="text-6xl">0</span><span class="text-base mt-1">Segundos</span></li>
-      </ul>
+        </div>
+        <div id="countdown" class="pt-12 fade-in-right text-shadow-lg w-full flex flex-col items-center justify-center">
+            <ul class="flex space-x-6 font-ethnocentric text-white text-4xl text-shadow-lg">
+                <li class="flex flex-col items-center"><span class="sm:text-3xl">0</span><span
+                        class="text-base mt-1">Dias</span></li>
+                <li class="flex flex-col items-center"><span class="sm:text-3xl">0</span><span
+                        class="text-base mt-1">Horas</span></li>
+                <li class="flex flex-col items-center"><span class="sm:text-3xl">0</span><span
+                        class="text-base mt-1">Minutos</span></li>
+                <li class="flex flex-col items-center"><span class="sm:text-3xl">0</span><span
+                        class="text-base mt-1">Segundos</span></li>
+            </ul>
+        </div>
     </div>
     <div>
         <footer class="font-ethnocentric fixed bottom-5 left-5 text-sm text-white">
@@ -56,7 +76,7 @@
     </div>
     <script src="./countdown2.js"></script>
     <script src="./typing.js"></script>
-</script>
+    </script>
 </body>
 
 </html>
