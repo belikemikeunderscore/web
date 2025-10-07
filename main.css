@@ -1,3 +1,6 @@
+/*https://lucide.dev/icons/*/
+
+
 @font-face {
   font-family: 'ethnocentric';
   src: url('./fonts/EthnocentricRg.woff2') format('woff2');
@@ -62,6 +65,21 @@
 
   }
 }
+
+
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.infinite-scroll {
+  animation: infinite-scroll 25s linear infinite;
+}
+
 
 .menu-btn {
   margin-left: 1rem; /* ml-4 */
