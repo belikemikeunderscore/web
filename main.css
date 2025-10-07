@@ -22,21 +22,44 @@
   font-family: 'coolvetica', sans-serif;
 }
 
-.fade-in-right {
+.fade-in {
   opacity: 0;
-  transform: translateX(50px);
-  animation: fadeInRight 1s ease-out forwards;
+  animation: fadeIn 1s ease-in-out forwards;
   animation-delay: 1s;
 }
 
-@keyframes fadeInRight {
+/*tried to make delays for each number but it's not working cause java script only loads the shits after Ay what if i hang myself*/
+.fade-in-days {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+  animation-delay: 1.5s; 
+}
+
+.fade-in-hours {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+  animation-delay: 1.7s; 
+}
+
+.fade-in-minutes {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+  animation-delay: 1.9s; 
+}
+
+.fade-in-seconds {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+  animation-delay: 2.1s; 
+}
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateX(50px);
+
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+
   }
 }
 
@@ -49,5 +72,5 @@
   cursor: pointer;
   background: linear-gradient(135deg, #dc2626, #7f1d1d); /* approximate from-red-600 to-red-900 */
   border-radius: 0; /* adjust if needed */
-  margin-bottom: 0.25rem; /* mb-4 */
+  margin-top: 0.25rem
 }
