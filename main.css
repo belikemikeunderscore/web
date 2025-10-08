@@ -75,7 +75,7 @@ Red   red-900     #7F1D1D
 }
 
 
-@keyframes infinite-scroll {
+@keyframes infinite-scroll-left {
   from {
     transform: translateX(0);
   }
@@ -84,10 +84,22 @@ Red   red-900     #7F1D1D
   }
 }
 
-.infinite-scroll {
-  animation: infinite-scroll 25s linear infinite;
+.infinite-scroll-left {
+  animation: infinite-scroll-left 25s linear infinite;
 }
 
+@keyframes infinite-scroll-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.infinite-scroll-right {
+  animation: infinite-scroll-right 25s linear infinite;
+}
 
 .menu-btn {
   margin-left: 1rem; /* ml-4 */
