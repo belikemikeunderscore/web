@@ -1,4 +1,5 @@
 /*https://lucide.dev/icons/*/
+/*https://codesandbox.io/p/sandbox/dp47s3?file=%2Findex.html%3A54%2C17*/
 /*Colors
 Black neutral-950 #0A0A0A
 Gray  neutral-500 #737373
@@ -77,10 +78,10 @@ Red   red-900     #7F1D1D
 
 @keyframes infinite-scroll-left {
   from {
-    transform: translateX(0);
+    transform: translateX(-100%);
   }
   to {
-    transform: translateX(-100%);
+    transform: translateX(-200%);
   }
 }
 
@@ -90,10 +91,10 @@ Red   red-900     #7F1D1D
 
 @keyframes infinite-scroll-right {
   from {
-    transform: translateX(0);
+    transform: translateX(-200%);
   }
   to {
-    transform: translateX(100%);
+    transform: translateX(-100%);
   }
 }
 
