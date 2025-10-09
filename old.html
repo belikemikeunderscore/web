@@ -1,0 +1,109 @@
+  <!doctype html>
+<html class="scroll-smooth">
+
+    <head>
+      <meta name="theme-color" content="#7f1d1d" />
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>PlayNESTI 26 | NESTIUAC</title>
+        <meta name="description" content="A Maior LAN Party de São Miguel" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+            src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <link href="./main.css" type="text/css" rel="stylesheet">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    </head>
+
+    <body class="bg-black-500 text-black flex items-center min-h-screen">
+        <div class="flex items-center space-x-4">
+            <header
+                class="fixed top-5 left-5 text-2xl font-bold bg-gray-100 px-4 py-2 rounded-full shadow-lg flex items-center z-50">
+
+                <a href="#top" class="flex items-center font-ethnocentric">
+                    <p class="inline-block">PLAYNESTI</p>
+                    <span
+                        class="ml-1 inline-block -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">26</span>
+                </a>
+
+                <button id="menu-toggle"
+                    class="ml-4 md:hidden text-black bg-white px-2 py-1 rounded-full bg-gray-100 shadow-lg">
+                      ☰
+                </button>
+
+                <nav id="menu"
+                    class="hidden md:block absolute md:static md:flex flex-col md:flex-row md:items-center md:space-x-4 font-ethnocentric absolute md:static top-16 left-0 bg-gray-100 md:bg-transparent px-4 md:px-0 py-2 md:py-0 md:p-0 rounded-lg md:rounded-none shadow-lg md:shadow-none">
+                    <button class="menu-btn md:menu-btn-md">Torneios</button>
+                    <button class="menu-btn md:menu-btn-md">Documentação</button>
+                    <button class="menu-btn md:menu-btn-md">Contactos</button>
+                    <button class="menu-btn md:menu-btn-md">FAQ</button>
+                    <button class="menu-btn md:menu-btn-md">Galeria</button>
+                    <button class="menu-btn md:menu-btn-md">Arena</button>
+                    <button
+                        class="menu-btn md:menu-btn-md bg-gradient-to-tr from-red-600 to-red-900 px-2 py-1 text-white rounded md:text-nowrap">Inscreve-te</button>
+                </nav>
+            </header>
+        </div>
+
+        <video autoplay muted loop id="myVideo"
+            class="fixed right-0 bottom-0 min-w-full min-h-full object-cover -z-10">
+            <source src="./videosite.mp4" type="video/mp4">
+        </video>
+
+        <div id="top"
+            class="flex flex-col items-center justify-center text-center min-h-screen md:flex-row md:items-center md:justify-center md:space-x-16">
+            <div class="flex-1">
+                <div
+                    class="md:pt-10 md:pl-40 md:flex-row items-center justify-center text-center">
+                    <h1
+                        class="font-ethnocentric text-6xl md:text-7xl lg:text-8xl text-white text-shadow-lg">Preparado?</h1>
+                    <p
+                        class="font-coolvetica text-center py-3 md:text-left md:text-4xl text-white mb-8 text-shadow-lg">A
+                        PlayNESTI LAN Party volta em 2026 com mais <span
+                            class="typed-text underline decoration-3 md:decoration-4"></span></p>
+                    <a href="#inscreve-te"
+                        class="font-coolvetica inline-block bg-gradient-to-tr from-red-600 to-red-900 text-white px-6 py-3 rounded-full shadow-lg">Inscreve-te
+                        Agora</a>
+
+                </div>
+                <div id="countdown"
+                    class="pt-12 fade-in-right text-shadow-lg w-full flex flex-col items-center justify-center">
+                    <ul
+                        class="flex space-x-6 font-ethnocentric text-white text-4xl text-shadow-lg">
+                        <li class="flex flex-col items-center"><span
+                                class="sm:text-3xl">0</span><span
+                                class="text-base mt-1">Dias</span></li>
+                        <li class="flex flex-col items-center"><span
+                                class="sm:text-3xl">0</span><span
+                                class="text-base mt-1">Horas</span></li>
+                        <li class="flex flex-col items-center"><span
+                                class="sm:text-3xl">0</span><span
+                                class="text-base mt-1">Minutos</span></li>
+                        <li class="flex flex-col items-center"><span
+                                class="sm:text-3xl">0</span><span
+                                class="text-base mt-1">Segundos</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div>
+            <footer
+                class="font-ethnocentric fixed bottom-5 left-5 text-sm text-white">
+                &copy; 2025 NESTIUAC. Todos os direitos reservados.
+            </footer>
+        </div>
+        <script src="./countdown2.js"></script>
+        <script src="./typing.js"></script>
+        <script>
+  // Mobile toggle logic
+  document.getElementById("menu-toggle").addEventListener("click", function () {
+    document.getElementById("menu").classList.toggle("hidden");
+  });
+</script>
+    </body>
+
+</html>

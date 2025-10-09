@@ -1,109 +1,242 @@
-  <!doctype html>
+<!doctype html>
 <html class="scroll-smooth">
 
-    <head>
-      <meta name="theme-color" content="#7f1d1d" />
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>PlayNESTI 26 | NESTIUAC</title>
-        <meta name="description" content="A Maior LAN Party de São Miguel" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script
-            src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js"></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-        <link href="./main.css" type="text/css" rel="stylesheet">
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-        <link rel="manifest" href="/site.webmanifest">
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    </head>
+<head>
+    <meta name="theme-color" content="#7f1d1d" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>PlayNESTI 26 | NESTIUAC</title>
+    <meta name="description" content="A Maior LAN Party de São Miguel" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="./main.css" type="text/css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <script src="./typing.js"></script>
+    <script src="./countdown2.js"></script>
 
-    <body class="bg-black-500 text-black flex items-center min-h-screen">
-        <div class="flex items-center space-x-4">
-            <header
-                class="fixed top-5 left-5 text-2xl font-bold bg-gray-100 px-4 py-2 rounded-full shadow-lg flex items-center z-50">
+</head>
 
-                <a href="#top" class="flex items-center font-ethnocentric">
-                    <p class="inline-block">PLAYNESTI</p>
-                    <span
-                        class="ml-1 inline-block -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">26</span>
+<body>
+    <!--Navbar-->
+    <div class="flex items-center space-x-4">
+        <header class="fixed top-5 left-5 text-2xl font-bold bg-gray-100 px-4 py-2 rounded-full shadow-lg flex items-center z-50">
+
+            <a href="#top" class="flex items-center font-ethnocentric">
+                <p class="inline-block">PLAYNESTI</p>
+                <span class="ml-1 inline-block -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">26</span>
+            </a>
+
+            <button id="menu-toggle" class="ml-4 md:hidden text-black bg-white px-2 py-1 rounded-full bg-gray-100 shadow-lg">
+                ☰
+            </button>
+
+            <nav id="menu" class="hidden md:mt-0 md:block absolute md:static md:flex flex-col md:flex-row md:items-center font-ethnocentric absolute md:static top-16 left-0 bg-gray-100 md:bg-transparent px-4 py-2 md:p-0 rounded-lg md:rounded-none shadow-lg md:shadow-none">
+                <a href="#arena">
+                <button class="menu-btn mt-1 md:mb-0 md:mt-0">Arena</button>
                 </a>
+                <a href="#torneios">
+                <button class="menu-btn mt-1 md:mb-0 md:mt-0">Torneios</button>
+                </a>
+                <a href="#documentacao">
+                <button class="menu-btn mt-1 md:mb-0 md:mt-0">Documentação</button>
+                </a>
+                <a href="#galeria">
+                <button class="menu-btn mt-1 md:mb-0 md:mt-0">Galeria</button>
+                </a>
+                <a href="#faq">
+                <button class="menu-btn mt-1 md:mb-0 md:mt-0">FAQ</button>
+                </a>
+                <a href="#contactos">
+                <button class="menu-btn mt-1 md:mb-0 md:mt-0">Contactos</button>
+                </a>
+                <button class="menu-btn mt-1 md:mb-0 md:mt-0 break-keep">Inscreve-te</button>
+            </nav>
+        </header>
+    </div>
 
-                <button id="menu-toggle"
-                    class="ml-4 md:hidden text-black bg-white px-2 py-1 rounded-full bg-gray-100 shadow-lg">
-                      ☰
-                </button>
+    <div id="topo" class="min-w-screen min-h-screen min-w-screen min-h-screen">
+        <!--Header-->
 
-                <nav id="menu"
-                    class="hidden md:block absolute md:static md:flex flex-col md:flex-row md:items-center md:space-x-4 font-ethnocentric absolute md:static top-16 left-0 bg-gray-100 md:bg-transparent px-4 md:px-0 py-2 md:py-0 md:p-0 rounded-lg md:rounded-none shadow-lg md:shadow-none">
-                    <button class="menu-btn md:menu-btn-md">Torneios</button>
-                    <button class="menu-btn md:menu-btn-md">Documentação</button>
-                    <button class="menu-btn md:menu-btn-md">Contactos</button>
-                    <button class="menu-btn md:menu-btn-md">FAQ</button>
-                    <button class="menu-btn md:menu-btn-md">Galeria</button>
-                    <button class="menu-btn md:menu-btn-md">Arena</button>
-                    <button
-                        class="menu-btn md:menu-btn-md bg-gradient-to-tr from-red-600 to-red-900 px-2 py-1 text-white rounded md:text-nowrap">Inscreve-te</button>
-                </nav>
-            </header>
-        </div>
-
-        <video autoplay muted loop id="myVideo"
-            class="fixed right-0 bottom-0 min-w-full min-h-full object-cover -z-10">
-            <source src="./videosite.mp4" type="video/mp4">
-        </video>
-
-        <div id="top"
-            class="flex flex-col items-center justify-center text-center min-h-screen md:flex-row md:items-center md:justify-center md:space-x-16">
-            <div class="flex-1">
-                <div
-                    class="md:pt-10 md:pl-40 md:flex-row items-center justify-center text-center">
-                    <h1
-                        class="font-ethnocentric text-6xl md:text-7xl lg:text-8xl text-white text-shadow-lg">Preparado?</h1>
-                    <p
-                        class="font-coolvetica text-center py-3 md:text-left md:text-4xl text-white mb-8 text-shadow-lg">A
-                        PlayNESTI LAN Party volta em 2026 com mais <span
-                            class="typed-text underline decoration-3 md:decoration-4"></span></p>
-                    <a href="#inscreve-te"
-                        class="font-coolvetica inline-block bg-gradient-to-tr from-red-600 to-red-900 text-white px-6 py-3 rounded-full shadow-lg">Inscreve-te
-                        Agora</a>
-
-                </div>
-                <div id="countdown"
-                    class="pt-12 fade-in-right text-shadow-lg w-full flex flex-col items-center justify-center">
-                    <ul
-                        class="flex space-x-6 font-ethnocentric text-white text-4xl text-shadow-lg">
-                        <li class="flex flex-col items-center"><span
-                                class="sm:text-3xl">0</span><span
-                                class="text-base mt-1">Dias</span></li>
-                        <li class="flex flex-col items-center"><span
-                                class="sm:text-3xl">0</span><span
-                                class="text-base mt-1">Horas</span></li>
-                        <li class="flex flex-col items-center"><span
-                                class="sm:text-3xl">0</span><span
-                                class="text-base mt-1">Minutos</span></li>
-                        <li class="flex flex-col items-center"><span
-                                class="sm:text-3xl">0</span><span
-                                class="text-base mt-1">Segundos</span></li>
+        <div class="flex flex-col items-center justify-center text-center min-h-screen md:flex-row md:items-center md:justify-center md:space-x-16">
+            <div>
+                <h1 class="font-ethnocentric text-white text-4xl text-shadow-lg text-center mt-50">Preparado?</h1>
+            </div>
+            <div>
+                <p class="font-coolvetica text-white text-xl text-shadow-lg text-center">A 15ª edição da PlayNESTI LAN Party volta em 2026 com mais <span class="typed-text underline decoration-3 ::decoration-4"></span> </p>
+            </div>
+            <a href="#inscreve-te" class="mt-6 mb-3 text-center font-coolvetica bg-gradient-to-tr from-red-600 to-red-900 text-white px-6 py-3 rounded-full shadow-lg size w-35 self-center"><button>Inscreve-te</button></a>
+            <div>
+                <div id="countdown" class="mt-3 fade-in text-shadow-lg w-full flex flex-col items-center justify-center">
+                    <ul class="flex space-x-6 font-ethnocentric text-white text-3xl text-shadow-lg">
+                        <li class="flex flex-col items-center"><span class="text-2xl">0</span><span class="text-base mt-1">Dias</span></li>
+                        <li class="flex flex-col items-center"><span class="text-2xl">0</span><span class="text-base mt-1">Horas</span></li>
+                        <li class="flex flex-col items-center"><span class="text-2xl">0</span><span class="text-base mt-1">Minutos</span></li>
+                        <li class="flex flex-col items-center"><span class="text-2xl">0</span><span class="text-base mt-1">Segundos</span></li>
                     </ul>
+                </div>
+                <div class="flex justify-center mt-12 animate-bounce">
+                    <a href="#arena">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down fade-in"><path d="m6 9 6 6 6-6"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
-        <div>
-            <footer
-                class="font-ethnocentric fixed bottom-5 left-5 text-sm text-white">
-                &copy; 2025 NESTIUAC. Todos os direitos reservados.
-            </footer>
+
+        <video autoplay muted loop id="myVideo" class="fixed right-0 bottom-0 min-w-full min-h-full object-cover -z-10">
+            <source src="./videosite.mp4" type="video/mp4">
+        </video>
+    </div>
+
+
+    <div id="arena" class="min-w-screen min-h-screen bg-black flex flex-col justify-between overflow-hidden">
+
+<div class="w-full overflow-hidden">
+    <div class="inline-flex flex-nowrap overflow-hidden">
+      <ul class="flex items-center justify-center [&_li]:mx-3 infinite-scroll-left pt-5 whitespace-nowrap">
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+      </ul>
+        <ul class="flex items-center justify-center [&_li]:mx-3 infinite-scroll-left pt-5 whitespace-nowrap" aria-hidden="true">
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+      </ul>
+        <ul class="flex items-center justify-center [&_li]:mx-3 infinite-scroll-left pt-5 whitespace-nowrap" aria-hidden="true">
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="flex-2 flex flex-col justify-center items-center text-white text-center">
+    <h2 class="font-ethnocentric text-4xl">Açor Arena</h2>
+    <p class="font-coolvetica mt-4 max-w-lg text-neutral-300">A nossa segunda casa, situada na Vila Franca do Campo, São Miguel - Açores
+    </p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3156.1322321229213!2d-25.443499123534675!3d37.71657391550954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb5d2643a9866f95%3A0x5f56d2a33cf24892!2sA%C3%A7or%20Arena%20Pavilhao%20Multiusos!5e0!3m2!1sen!2spt!4v1759937204450!5m2!1sen!2spt" width="450" height="450" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="py-15 px-15"></iframe>
+  </div>
+
+  <div class="w-full overflow-hidden mb-6">
+    <div class="inline-flex flex-nowrap overflow-hidden">
+      <ul class="flex items-center justify-center [&_li]:mx-3 infinite-scroll-right pt-5 whitespace-nowrap" aria-hidden="true">
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+      </ul>
+        <ul class="flex items-center justify-center [&_li]:mx-3 infinite-scroll-right pt-5 whitespace-nowrap">
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+      </ul>
+        <ul class="flex items-center justify-center [&_li]:mx-3 infinite-scroll-right pt-5 whitespace-nowrap">
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+      </ul>
+        <ul class="flex items-center justify-center [&_li]:mx-3 infinite-scroll-right pt-5 whitespace-nowrap">
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+    <div id="torneios" class="min-w-screen min-h-screen bg-neutral-200">
+    </div>
+    <div id="documentacao" class="min-w-screen min-h-screen bg-black">
+    </div>
+    <div id="galeria" class="min-w-screen min-h-screen bg-neutral-200">
+    </div>
+    <div id="faq" class="min-w-screen min-h-screen bg-black">
+        <div class="container mx-auto px-4 py-25">
+            <h1 class="font-ethnocentric bold text-white text-2xl mb-4">FAQ</h1>
+            <div class="bg-red-900 p-4 rounded-lg">
+                <h2 class="font-coolvetica bold text-white">O que é uma LAN PARTY?</h2>
+                <p class="font-coolvetica text-neutral-200">Nós montamos filas de mesas e disponibilizamos energia e cabos de rede entre elas.<br>Os participantes trazem os seus próprios computadores e conectam se à rede local para jogar.</p>
+            </div>
+            <div class="bg-red-900 p-4 rounded-lg mt-4">
+                <h2 class="font-coolvetica bold text-white">Sou menor de idade, posso participar?</h2>
+                <p class="font-coolvetica text-neutral-200">16 - 17 anos: Sim, desde que entregue a autorização dos responsáveis no ato da inscrição.<br> < 16 anos: Sim, desde que entregue a autorização dos responsáveis no ato da inscrição e acompanhados dos mesmos durante a LAN Party.</p>
+            </div>
+            <div class="bg-red-900 p-4 rounded-lg mt-4">
+                <h2 class="font-coolvetica bold text-white">Posso permanecer no recinto à noite?</h2>
+                <p class="font-coolvetica text-neutral-200">Sim, é permitido permanecer no recinto durante a noite, desde que respeitadas as regras de conduta e silêncio <span class="underline decoration-2">quando aplicadas</span>.</p>
+            </div>
+            <div class="bg-red-900 p-4 rounded-lg mt-4">
+                <h2 class="font-coolvetica bold text-white">É possivel tomar duche?</h2>
+                <p class="font-coolvetica text-neutral-200">Sim, a organização disponibiliza duches para os participantes, aquando solicitados.</p>
+            </div>  
         </div>
-        <script src="./countdown2.js"></script>
-        <script src="./typing.js"></script>
-        <script>
-  // Mobile toggle logic
-  document.getElementById("menu-toggle").addEventListener("click", function () {
-    document.getElementById("menu").classList.toggle("hidden");
-  });
-</script>
-    </body>
+    </div>
+    <div id="contactos" class="min-w-screen min-h-screen bg-neutral-200">
+    </div>
+
+
+
+
+
+
+
+    <script>
+        // Mobile toggle logic
+        document.getElementById("menu-toggle").addEventListener("click", function () {
+          document.getElementById("menu").classList.toggle("hidden");
+        });
+    </script>
+    <script>
+        // Mobile toggle logic for all elements with class "menu-btn"
+        document.querySelectorAll(".menu-btn").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                document.getElementById("menu").classList.toggle("hidden");
+            });
+        });
+    </script>
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </html>
