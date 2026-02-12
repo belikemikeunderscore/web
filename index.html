@@ -1,243 +1,688 @@
-<!doctype html>
-<html class="scroll-smooth">
+ <!doctype html>
+ <html class="scroll-smooth">
+   <head>
+     <meta name="theme-color" content="#7f1d1d" />
+     <meta charset="UTF-8" />
+     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <title>PlayNESTI 26 | NESTIUAC</title>
+     <meta name="description" content="A Maior LAN Party de São Miguel" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+     <link href="./main.css" type="text/css" rel="stylesheet">
+     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+     <link rel="manifest" href="/site.webmanifest">
+     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+     <script src="./typing.js"></script>
+     <script src="./countdown2.js"></script>
+   </head>
+   <body>
+     <!--Navbar-->
+     <div class="flex items-center space-x-4">
+       <header class="fixed top-5 left-5 text-2xl font-bold bg-gray-100 px-4 py-2 rounded-full shadow-lg flex items-center z-50">
+         <a href="#top" class="flex items-center font-ethnocentric">
+           <p class="inline-block">PLAYNESTI</p>
+           <span class="ml-1 inline-block -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">26</span>
+         </a>
+         <button id="menu-toggle" class="ml-4 md:hidden text-black bg-white px-2 py-1 rounded-full bg-gray-100 shadow-lg"> ☰ </button>
+         <nav id="menu" class="hidden md:mt-0 md:block absolute md:static md:flex flex-col md:flex-row md:items-center font-ethnocentric absolute md:static top-16 left-0 bg-gray-100 md:bg-transparent px-4 py-2 md:p-0 rounded-lg md:rounded-none shadow-lg md:shadow-none">
+           <a href="#arena">
+             <button class="menu-btn mt-1 md:mb-0 md:mt-0">Arena</button>
+           </a>
+           <a href="#torneios">
+             <button class="menu-btn mt-1 md:mb-0 md:mt-0">Torneios</button>
+           </a>
+           <a href="#documentacao">
+             <button class="menu-btn mt-1 md:mb-0 md:mt-0">Documentação</button>
+           </a>
+           <a href="#galeria">
+             <button class="menu-btn mt-1 md:mb-0 md:mt-0">Galeria</button>
+           </a>
+           <a href="#faq">
+             <button class="menu-btn mt-1 md:mb-0 md:mt-0">FAQ</button>
+           </a>
+           <a href="#contactos">
+             <button class="menu-btn mt-1 md:mb-0 md:mt-0">Contactos</button>
+           </a>
+           <button class="menu-btn mt-1 md:mb-0 md:mt-0 break-keep">Inscreve-te</button>
+         </nav>
+       </header>
+     </div>
+     <div id="topo" class="relative min-h-screen w-full overflow-hidden">
+       <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black z-0"></div>
+       <video autoplay muted loop id="myVideo" class="absolute right-0 bottom-0 min-w-full min-h-full object-cover -z-20">
+         <source src="./videosite.mp4" type="video/mp4">
+       </video>
+       <section class="relative z-10 min-h-screen w-full flex items-center">
+         <div class="container mx-auto px-6 py-24 flex flex-col md:flex-row items-center justify-between">
+           <div class="md:w-3/5 text-center md:text-left mb-12 md:mb-0">
+             <h1 class="font-ethnocentric text-white text-5xl md:text-7xl leading-tight mb-6 drop-shadow-2xl"> PREPARADO? </h1>
+             <p class="font-coolvetica text-white text-xl md:text-2xl mb-10 max-w-xl opacity-90 drop-shadow-lg leading-relaxed"> A 12ª edição da PlayNESTI LAN Party volta em 2026 com mais <span class="typed-text text-red-600 underline decoration-red-700/50 decoration-4 underline-offset-8"></span>
+             </p>
+             <div class="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
+               <a href="#inscreve-te">
+                 <button class="bg-gradient-to-tr from-red-600 to-red-900 text-white px-10 py-4 rounded-full shadow-[0_0_20px_rgba(185,28,28,0.4)] font-ethnocentric text-sm hover:scale-105 transition-transform active:scale-95"> Inscreve-te Já </button>
+               </a>
+               <a href="#torneios" class="font-coolvetica text-white/70 hover:text-white transition-colors py-3 px-6"> Ver Torneios → </a>
+             </div>
+           </div>
+           <div class="md:w-2/5 flex flex-col items-center md:items-end">
+             <div class="bg-black/40 backdrop-blur-md p-8 rounded-3xl border border-white/10 shadow-2xl">
+               <p class="font-ethnocentric text-white/50 text-[10px] tracking-[0.3em] mb-6 text-center">PLAYNESTI 2026</p>
+               <div id="countdown" class="flex gap-4">
+                 <div class="flex flex-col items-center">
+                   <div class="relative">
+                     <div class="absolute inset-0 bg-red-700 blur-lg opacity-20"></div>
+                     <div id="days" class="relative bg-neutral-900 border border-white/10 text-white w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-xl font-ethnocentric text-2xl md:text-3xl">0</div>
+                   </div>
+                   <span class="text-white/40 mt-3 font-coolvetica text-xs uppercase tracking-widest">Dias</span>
+                 </div>
+                 <div class="flex flex-col items-center">
+                   <div class="relative">
+                     <div id="hours" class="relative bg-neutral-900 border border-white/10 text-white w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-xl font-ethnocentric text-2xl md:text-3xl">0</div>
+                   </div>
+                   <span class="text-white/40 mt-3 font-coolvetica text-xs uppercase tracking-widest">Horas</span>
+                 </div>
+                 <div class="flex flex-col items-center">
+                   <div class="relative">
+                     <div id="minutes" class="relative bg-neutral-900 border border-white/10 text-white w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-xl font-ethnocentric text-2xl md:text-3xl">0</div>
+                   </div>
+                   <span class="text-white/40 mt-3 font-coolvetica text-xs uppercase tracking-widest">Min</span>
+                 </div>
+                 <div class="flex flex-col items-center">
+                   <div class="relative">
+                     <div id="seconds" class="relative bg-red-700 text-white w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-xl font-ethnocentric text-2xl md:text-3xl shadow-[0_0_15px_rgba(185,28,28,0.5)]">0</div>
+                   </div>
+                   <span class="text-white/40 mt-3 font-coolvetica text-xs uppercase tracking-widest text-red-500">Seg</span>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+         <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+           <span class="font-coolvetica text-white/30 text-[10px] uppercase tracking-[0.5em]">Ler Mais</span>
+           <a href="#arena" class="animate-bounce">
+             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-50">
+               <path d="m6 9 6 6 6-6" />
+             </svg>
+           </a>
+         </div>
+       </section>
+     </div>
+     <div id="arena" class="relative min-h-screen bg-black flex flex-col justify-between overflow-hidden border-y border-white/5">
+       <div class="w-full bg-red-700/5 py-4 border-b border-white/5 backdrop-blur-sm">
+         <div class="flex overflow-hidden">
+           <div class="flex animate-marquee whitespace-nowrap">
+             <span class="font-ethnocentric text-2xl md:text-4xl text-neutral-800 mx-4 opacity-50 tracking-tighter italic">LAN PARTY • PLAYNESTI •</span>
+             <span class="font-ethnocentric text-2xl md:text-4xl text-neutral-800 mx-4 opacity-50 tracking-tighter italic">LAN PARTY • PLAYNESTI •</span>
+             <span class="font-ethnocentric text-2xl md:text-4xl text-neutral-800 mx-4 opacity-50 tracking-tighter italic">LAN PARTY • PLAYNESTI •</span>
+           </div>
+           <div class="flex animate-marquee whitespace-nowrap" aria-hidden="true">
+             <span class="font-ethnocentric text-2xl md:text-4xl text-neutral-800 mx-4 opacity-50 tracking-tighter italic">LAN PARTY • PLAYNESTI •</span>
+             <span class="font-ethnocentric text-2xl md:text-4xl text-neutral-800 mx-4 opacity-50 tracking-tighter italic">LAN PARTY • PLAYNESTI •</span>
+             <span class="font-ethnocentric text-2xl md:text-4xl text-neutral-800 mx-4 opacity-50 tracking-tighter italic">LAN PARTY • PLAYNESTI •</span>
+           </div>
+         </div>
+       </div>
+       <div class="flex-grow flex flex-col justify-center items-center px-6 py-12 relative z-10">
+         <div class="bg-red-700 text-white font-ethnocentric text-[10px] px-3 py-1 rounded-full mb-4 tracking-widest animate-pulse"> LOCALIZAÇÃO CONFIRMADA </div>
+         <h2 class="font-ethnocentric text-4xl md:text-6xl text-white mb-2">Açor Arena</h2>
+         <p class="font-coolvetica text-neutral-400 text-center max-w-lg mb-10 leading-relaxed"> A nossa segunda casa, situada na <span class="text-white">Vila Franca do Campo</span>, São Miguel. <br>Um espaço épico para competições de elite. </p>
+         <div class="relative group max-w-4xl w-full flex justify-center">
+           <div class="absolute -inset-1 bg-gradient-to-r from-red-800 to-red-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+           <div class="relative bg-neutral-900 p-2 rounded-2xl border border-white/10 w-full md:w-[600px] h-[350px] md:h-[450px]">
+             <div class="absolute inset-0 pointer-events-none rounded-2xl opacity-10" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3148.016335191638!2d-25.4357!3d37.7128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDQyJzQ2LjEiTiAyNcKwMjYnMDguNSJX!5e0!3m2!1spt-PT!2spt!4v1700000000000" class="w-full h-full rounded-xl grayscale invert-[0.9] contrast-[1.2] sepia-[0.2]" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+           </div>
+         </div>
+         <a href="#documentacao" class="mt-8 group">
+           <div class="flex flex-col items-center">
+             <span class="font-coolvetica text-neutral-400 group-hover:text-white transition-colors duration-300 underline decoration-red-700 underline-offset-8"> Clica aqui para visualizar a planta da arena </span>
+             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-700 mt-4 animate-bounce">
+               <path d="m7 15 5 5 5-5" />
+               <path d="m7 9 5 5 5-5" />
+             </svg>
+           </div>
+         </a>
+       </div>
+       <div class="w-full bg-neutral-900/50 py-4 border-t border-white/5">
+         <div class="flex overflow-hidden">
+           <div class="flex animate-marquee-reverse whitespace-nowrap">
+             <span class="font-ethnocentric text-2xl md:text-4xl text-red-900/30 mx-4 tracking-tighter">VILA FRANCA DO CAMPO • SÃO MIGUEL • AÇORES •</span>
+             <span class="font-ethnocentric text-2xl md:text-4xl text-red-900/30 mx-4 tracking-tighter">VILA FRANCA DO CAMPO • SÃO MIGUEL • AÇORES •</span>
+           </div>
+           <div class="flex animate-marquee-reverse whitespace-nowrap" aria-hidden="true">
+             <span class="font-ethnocentric text-2xl md:text-4xl text-red-900/30 mx-4 tracking-tighter">VILA FRANCA DO CAMPO • SÃO MIGUEL • AÇORES •</span>
+             <span class="font-ethnocentric text-2xl md:text-4xl text-red-900/30 mx-4 tracking-tighter">VILA FRANCA DO CAMPO • SÃO MIGUEL • AÇORES •</span>
+           </div>
+         </div>
+       </div>
+     </div>
+     <style>
+       @keyframes marquee {
+         0% {
+           transform: translateX(0);
+         }
 
-<head>
-    <meta name="theme-color" content="#7f1d1d" />
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>PlayNESTI 26 | NESTIUAC</title>
-    <meta name="description" content="A Maior LAN Party de São Miguel" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="./main.css" type="text/css" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <script src="./typing.js"></script>
-    <script src="./countdown2.js"></script>
+         100% {
+           transform: translateX(-100%);
+         }
+       }
 
-</head>
+       @keyframes marquee-reverse {
+         0% {
+           transform: translateX(-100%);
+         }
 
-<body>
-    <!--Navbar-->
-    <div class="flex items-center space-x-4">
-        <header class="fixed top-5 left-5 text-2xl font-bold bg-gray-100 px-4 py-2 rounded-full shadow-lg flex items-center z-50">
+         100% {
+           transform: translateX(0);
+         }
+       }
 
-            <a href="#top" class="flex items-center font-ethnocentric">
-                <p class="inline-block">PLAYNESTI</p>
-                <span class="ml-1 inline-block -skew-x-9 bg-gradient-to-tr from-red-600 to-red-900 px-1 py-1 text-white">26</span>
-            </a>
+       .animate-marquee {
+         animation: marquee 40s linear infinite;
+       }
 
-            <button id="menu-toggle" class="ml-4 md:hidden text-black bg-white px-2 py-1 rounded-full bg-gray-100 shadow-lg">
-                ☰
-            </button>
+       .animate-marquee-reverse {
+         animation: marquee-reverse 40s linear infinite;
+       }
+     </style>
+     <section id="torneios" class="min-w-screen min-h-screen bg-neutral-100 py-24">
+       <div class="container mx-auto px-6 max-w-6xl">
+         <div class="mb-16 text-center md:text-left">
+           <h2 class="font-ethnocentric text-4xl text-black">Torneios</h2>
+           <div class="h-1 w-20 bg-red-700 mt-2 mx-auto md:mx-0"></div>
+         </div>
+         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+           <div class="group relative overflow-hidden bg-white rounded-[2rem] shadow-xl border border-neutral-200 h-[600px] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+             <div class="h-full flex flex-col transition-all duration-500 group-hover:opacity-0">
+               <div class="h-64 w-full overflow-hidden relative">
+                 <img src="./images/csgohero.png" alt="CS2 Hero" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                 <div class="absolute inset-0 bg-gradient-to-t from-white to-transparent"></div>
+               </div>
+               <div class="px-8 pb-8 flex-grow flex flex-col justify-between">
+                 <div>
+                   <h3 class="font-ethnocentric text-2xl text-black mb-1">Counter-Strike 2</h3>
+                   <p class="font-coolvetica text-neutral-400 text-xs uppercase tracking-widest mb-4">First Person Shooter</p>
+                 </div>
+                 <div class="space-y-3">
+                   <div class="flex items-center justify-between border-b border-neutral-100 pb-2">
+                     <span class="font-coolvetica text-yellow-600 font-bold italic">1º Lugar</span>
+                     <span class="font-ethnocentric text-black text-lg">1000€</span>
+                   </div>
+                   <div class="flex items-center justify-between border-b border-neutral-100 pb-2">
+                     <span class="font-coolvetica text-neutral-400 font-bold italic">2º Lugar</span>
+                     <span class="font-ethnocentric text-black text-lg">500€</span>
+                   </div>
+                   <div class="flex items-center justify-between">
+                     <span class="font-coolvetica text-orange-800 font-bold italic">3º Lugar</span>
+                     <span class="font-ethnocentric text-black text-lg">300€</span>
+                   </div>
+                 </div>
+                 <div class="mt-6 pt-6 border-t-2 border-dashed border-neutral-200 flex items-center justify-between">
+                   <div class="flex flex-col">
+                     <span class="font-ethnocentric text-[10px] text-red-600 tracking-tighter">Taxa de Entrada</span>
+                     <span class="font-coolvetica text-neutral-400 text-xs italic">Preço por equipa</span>
+                   </div>
+                   <div class="text-right">
+                     <span class="font-ethnocentric text-3xl text-black">35€</span>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="absolute inset-0 bg-gradient-to-br from-red-700 via-red-800 to-red-950 p-10 flex flex-col justify-center items-center text-center translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-20">
+               <div class="w-full space-y-8">
+                 <div class="grid grid-cols-2 gap-4">
+                   <div class="bg-white/10 backdrop-blur-sm rounded-2xl py-4 border border-white/10">
+                     <p class="font-ethnocentric text-[10px] text-white/60 mb-1">Equipa</p>
+                     <p class="font-coolvetica text-2xl text-white font-bold">5 Players</p>
+                   </div>
+                   <div class="bg-white/10 backdrop-blur-sm rounded-2xl py-4 border border-white/10">
+                     <p class="font-ethnocentric text-[10px] text-white/60 mb-1">Suplentes</p>
+                     <p class="font-coolvetica text-2xl text-white font-bold">Até 2</p>
+                   </div>
+                 </div>
+                 <div class="py-4">
+                   <a href="./docs/regulamento.pdf" target="_blank" class="font-coolvetica text-white/80 hover:text-white underline underline-offset-8 transition-all"> Ver Regulamento Técnico </a>
+                 </div>
+                 <a href="#inscreve-te" class="block w-full">
+                   <button class="w-full bg-white text-red-800 font-ethnocentric py-4 rounded-2xl shadow-2xl hover:bg-black hover:text-white transition-all transform active:scale-95"> INSCREVE-TE JÁ </button>
+                 </a>
+               </div>
+             </div>
+           </div>
+            <div class="group relative overflow-hidden bg-white rounded-[2rem] shadow-xl border border-neutral-200 h-[600px] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+             <div class="h-full flex flex-col transition-all duration-500 group-hover:opacity-0">
+               <div class="h-64 w-full overflow-hidden relative">
+                 <img src="./images/valorant.png" alt="CS2 Hero" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                 <div class="absolute inset-0 bg-gradient-to-t from-white to-transparent"></div>
+               </div>
+               <div class="px-8 pb-8 flex-grow flex flex-col justify-between">
+                 <div>
+                   <h3 class="font-ethnocentric text-2xl text-black mb-1">Valorant</h3>
+                   <p class="font-coolvetica text-neutral-400 text-xs uppercase tracking-widest mb-4">First Person Shooter</p>
+                 </div>
+                 <div class="space-y-3">
+                   <div class="flex items-center justify-between border-b border-neutral-100 pb-2">
+                     <span class="font-coolvetica text-yellow-600 font-bold italic">1º Lugar</span>
+                     <span class="font-ethnocentric text-black text-lg">1000€</span>
+                   </div>
+                   <div class="flex items-center justify-between border-b border-neutral-100 pb-2">
+                     <span class="font-coolvetica text-neutral-400 font-bold italic">2º Lugar</span>
+                     <span class="font-ethnocentric text-black text-lg">500€</span>
+                   </div>
+                   <div class="flex items-center justify-between">
+                     <span class="font-coolvetica text-orange-800 font-bold italic">3º Lugar</span>
+                     <span class="font-ethnocentric text-black text-lg">300€</span>
+                   </div>
+                 </div>
+                 <div class="mt-6 pt-6 border-t-2 border-dashed border-neutral-200 flex items-center justify-between">
+                   <div class="flex flex-col">
+                     <span class="font-ethnocentric text-[10px] text-red-600 tracking-tighter">Taxa de Entrada</span>
+                     <span class="font-coolvetica text-neutral-400 text-xs italic">Preço por equipa</span>
+                   </div>
+                   <div class="text-right">
+                     <span class="font-ethnocentric text-3xl text-black">35€</span>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="absolute inset-0 bg-gradient-to-br from-red-700 via-red-800 to-red-950 p-10 flex flex-col justify-center items-center text-center translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-20">
+               <div class="w-full space-y-8">
+                 <div class="grid grid-cols-2 gap-4">
+                   <div class="bg-white/10 backdrop-blur-sm rounded-2xl py-4 border border-white/10">
+                     <p class="font-ethnocentric text-[10px] text-white/60 mb-1">Equipa</p>
+                     <p class="font-coolvetica text-2xl text-white font-bold">5 Players</p>
+                   </div>
+                   <div class="bg-white/10 backdrop-blur-sm rounded-2xl py-4 border border-white/10">
+                     <p class="font-ethnocentric text-[10px] text-white/60 mb-1">Suplentes</p>
+                     <p class="font-coolvetica text-2xl text-white font-bold">Até 2</p>
+                   </div>
+                 </div>
+                 <div class="py-4">
+                   <a href="./docs/regulamento.pdf" target="_blank" class="font-coolvetica text-white/80 hover:text-white underline underline-offset-8 transition-all"> Ver Regulamento Técnico </a>
+                 </div>
+                 <a href="#inscreve-te" class="block w-full">
+                   <button class="w-full bg-white text-red-800 font-ethnocentric py-4 rounded-2xl shadow-2xl hover:bg-black hover:text-white transition-all transform active:scale-95"> INSCREVE-TE JÁ </button>
+                 </a>
+               </div>
+             </div>
+           </div>
+            <div class="group relative overflow-hidden bg-white rounded-[2rem] shadow-xl border border-neutral-200 h-[600px] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+             <div class="h-full flex flex-col transition-all duration-500 group-hover:opacity-0">
+               <div class="h-64 w-full overflow-hidden relative">
+                 <img src="./images/rocketleague.jpg" alt="CS2 Hero" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                 <div class="absolute inset-0 bg-gradient-to-t from-white to-transparent"></div>
+               </div>
+               <div class="px-8 pb-8 flex-grow flex flex-col justify-between">
+                 <div>
+                   <h3 class="font-ethnocentric text-2xl text-black mb-1">Rocket League</h3>
+                   <p class="font-coolvetica text-neutral-400 text-xs uppercase tracking-widest mb-4">Fast-Paced</p>
+                 </div>
+                 <div class="space-y-3">
+                   <div class="flex items-center justify-between border-b border-neutral-100 pb-2">
+                     <span class="font-coolvetica text-yellow-600 font-bold italic">1º Lugar</span>
+                     <span class="font-ethnocentric text-black text-lg">100€</span>
+                   </div>
+                   <div class="flex items-center justify-between border-b border-neutral-100 pb-2">
+                     <span class="font-coolvetica text-neutral-400 font-bold italic">2º Lugar</span>
+                     <span class="font-ethnocentric text-black text-lg">50€</span>
+                   </div>
+                   <div class="flex items-center justify-between">
+                     <span class="font-coolvetica text-orange-800 font-bold italic">3º Lugar</span>
+                     <span class="font-ethnocentric text-black text-lg">30€</span>
+                   </div>
+                 </div>
+                 <div class="mt-6 pt-6 border-t-2 border-dashed border-neutral-200 flex items-center justify-between">
+                   <div class="flex flex-col">
+                     <span class="font-ethnocentric text-[10px] text-red-600 tracking-tighter">Taxa de Entrada</span>
+                     <span class="font-coolvetica text-neutral-400 text-xs italic">Preço por equipa</span>
+                   </div>
+                   <div class="text-right">
+                     <span class="font-ethnocentric text-3xl text-black">12€</span>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="absolute inset-0 bg-gradient-to-br from-red-700 via-red-800 to-red-950 p-10 flex flex-col justify-center items-center text-center translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-20">
+               <div class="w-full space-y-8">
+                 <div class="grid grid-cols-2 gap-4">
+                   <div class="bg-white/10 backdrop-blur-sm rounded-2xl py-4 border border-white/10">
+                     <p class="font-ethnocentric text-[10px] text-white/60 mb-1">Equipa</p>
+                     <p class="font-coolvetica text-2xl text-white font-bold">2 Players</p>
+                   </div>
+                   <div class="bg-white/10 backdrop-blur-sm rounded-2xl py-4 border border-white/10">
+                     <p class="font-ethnocentric text-[10px] text-white/60 mb-1">Suplentes</p>
+                     <p class="font-coolvetica text-2xl text-white font-bold">Até 1</p>
+                   </div>
+                 </div>
+                 <div class="py-4">
+                   <a href="./docs/regulamento.pdf" target="_blank" class="font-coolvetica text-white/80 hover:text-white underline underline-offset-8 transition-all"> Ver Regulamento Técnico </a>
+                 </div>
+                 <a href="#inscreve-te" class="block w-full">
+                   <button class="w-full bg-white text-red-800 font-ethnocentric py-4 rounded-2xl shadow-2xl hover:bg-black hover:text-white transition-all transform active:scale-95"> INSCREVE-TE JÁ </button>
+                 </a>
+               </div>
+             </div>
+           </div>
+            <div class="group relative overflow-hidden bg-white rounded-[2rem] shadow-xl border border-neutral-200 h-[600px] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+             <div class="h-full flex flex-col transition-all duration-500 group-hover:opacity-0">
+               <div class="h-64 w-full overflow-hidden relative">
+                 <img src="./images/rocketleague.jpg" alt="CS2 Hero" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                 <div class="absolute inset-0 bg-gradient-to-t from-white to-transparent"></div>
+               </div>
+               <div class="px-8 pb-8 flex-grow flex flex-col justify-between">
+                 <div>
+                   <h3 class="font-ethnocentric text-2xl text-black mb-1">Pokémon</h3>
+                   <p class="font-coolvetica text-neutral-400 text-xs uppercase tracking-widest mb-4">Trading Card Games</p>
+                 </div>
+                 <div class="space-y-3">
+                   <div class="flex items-center justify-between border-b border-neutral-100 pb-2">
+                     <span class="font-coolvetica text-yellow-600 font-bold italic">1º Lugar</span>
+                     <span class="font-ethnocentric text-black text-lg">25€</span>
+                   </div>
+                   <div class="flex items-center justify-between border-b border-neutral-100 pb-2">
+                     <span class="font-coolvetica text-neutral-400 font-bold italic">2º Lugar</span>
+                     <span class="font-ethnocentric text-black text-lg">20€</span>
+                   </div>
+                   <div class="flex items-center justify-between">
+                     <span class="font-coolvetica text-orange-800 font-bold italic">3º Lugar</span>
+                     <span class="font-ethnocentric text-black text-lg">2 Boosters</span>
+                   </div>
+                 </div>
+                 <div class="mt-6 pt-6 border-t-2 border-dashed border-neutral-200 flex items-center justify-between">
+                   <div class="flex flex-col">
+                     <span class="font-ethnocentric text-[10px] text-red-600 tracking-tighter">Taxa de Entrada</span>
+                     <span class="font-coolvetica text-neutral-400 text-xs italic">Preço por equipa</span>
+                   </div>
+                   <div class="text-right">
+                     <span class="font-ethnocentric text-3xl text-black">5€</span>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="absolute inset-0 bg-gradient-to-br from-red-700 via-red-800 to-red-950 p-10 flex flex-col justify-center items-center text-center translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-20">
+               <div class="w-full space-y-8">
+                 <div class="py-4">
+                   <a href="./docs/regulamento.pdf" target="_blank" class="font-coolvetica text-white/80 hover:text-white underline underline-offset-8 transition-all"> Ver Regulamento Técnico </a>
+                 </div>
+                 <a href="#inscreve-te" class="block w-full">
+                   <button class="w-full bg-white text-red-800 font-ethnocentric py-4 rounded-2xl shadow-2xl hover:bg-black hover:text-white transition-all transform active:scale-95"> INSCREVE-TE JÁ </button>
+                 </a>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+       </div>
+     </section>
+     <div id="documentacao" class="min-w-screen min-h-screen bg-black py-25">
+       <div class="container mx-auto px-6 max-w-6xl text-white">
+         <div class="mb-12">
+           <h2 class="font-ethnocentric text-4xl">Documentação</h2>
+           <div class="h-1 w-20 bg-red-700 mt-2"></div>
+           <p class="font-coolvetica text-neutral-400 mt-4 max-w-2xl"> Faz o download dos documentos necessários. Lembra-te que, se fores menor de idade, a autorização é obrigatória para a entrada no recinto. </p>
+         </div>
+         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+           <div class="group bg-neutral-900/50 p-8 rounded-2xl border border-white/10 hover:border-red-700 transition-all duration-300 ring-2 ring-red-700/50 shadow-[0_0_20px_rgba(185,28,28,0.2)]">
+             <div class="mb-4 text-red-600 group-hover:scale-110 transition-transform duration-300">
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                 <circle cx="9" cy="7" r="4" />
+                 <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                 <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+               </svg>
+             </div>
+             <h3 class="font-ethnocentric text-xl mb-2 italic">Menores de Idade</h3>
+             <p class="font-coolvetica text-neutral-400 mb-6 text-sm">Documento obrigatório para participantes com menos de 18 anos. Deve ser assinado pelos tutores.</p>
+             <a href="./docs/Autorizacao_Menores.pdf" target="_blank">
+               <button class="w-full py-3 rounded-lg bg-red-700 text-white font-ethnocentric text-xs hover:bg-red-800 transition-all">Baixar Termo</button>
+             </a>
+           </div>
+           <div class="group bg-neutral-900/50 p-8 rounded-2xl border border-white/10 hover:border-red-700 transition-all duration-300">
+             <div class="mb-4 text-red-600 group-hover:scale-110 transition-transform duration-300">
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                 <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                 <polyline points="14 2 14 8 20 8" />
+               </svg>
+             </div>
+             <h3 class="font-ethnocentric text-xl mb-2">Regulamento</h3>
+             <p class="font-coolvetica text-neutral-400 mb-6 text-sm">Consulta as normas de conduta, segurança e funcionamento geral do evento.</p>
+             <a href="./docs/Regulamento_PlayNESTI_2026.pdf" target="_blank">
+               <button class="w-full py-3 rounded-lg border border-red-700 text-red-700 font-ethnocentric text-xs hover:bg-red-700 hover:text-white transition-all">Download PDF</button>
+             </a>
+           </div>
+           <div class="group bg-neutral-900/50 p-8 rounded-2xl border border-white/10 hover:border-red-700 transition-all duration-300">
+             <div class="mb-4 text-red-600 group-hover:scale-110 transition-transform duration-300">
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                 <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+                 <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+                 <path d="M4 22h16" />
+                 <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+                 <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+                 <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+               </svg>
+             </div>
+             <h3 class="font-ethnocentric text-xl mb-2">Competição</h3>
+             <p class="font-coolvetica text-neutral-400 mb-6 text-sm">Formatos, pick/ban, tempos de pausa e critérios de desempate técnicos.</p>
+             <a href="./docs/Regras_Torneios.pdf" target="_blank">
+               <button class="w-full py-3 rounded-lg border border-red-700 text-red-700 font-ethnocentric text-xs hover:bg-red-700 hover:text-white transition-all">Download Regras</button>
+             </a>
+           </div>
+           <div class="group bg-neutral-900/50 p-8 rounded-2xl border border-white/10 hover:border-red-700 transition-all duration-300">
+             <div class="mb-4 text-red-600 group-hover:scale-110 transition-transform duration-300">
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                 <polygon points="3 7 9 4 15 7 21 4 21 17 15 20 9 17 3 20 3 7" />
+                 <line x1="9" y1="4" x2="9" y2="17" />
+                 <line x1="15" y1="7" x2="15" y2="20" />
+               </svg>
+             </div>
+             <h3 class="font-ethnocentric text-xl mb-2">Mapa</h3>
+             <p class="font-coolvetica text-neutral-400 mb-6 text-sm">Localização das mesas, zonas de descanso, WC e saídas de emergência.</p>
+             <a href="./docs/Mapa_Arena.pdf" target="_blank">
+               <button class="w-full py-3 rounded-lg border border-red-700 text-red-700 font-ethnocentric text-xs hover:bg-red-700 hover:text-white transition-all">Ver Planta</button>
+             </a>
+           </div>
+         </div>
+         <div class="mt-16 p-6 bg-red-900/20 border-l-4 border-red-700 rounded-r-xl">
+           <p class="font-coolvetica text-sm italic text-neutral-300">
+             <strong>Nota:</strong> Todos os ficheiros estão em formato PDF. Se tiveres problemas ao abrir, contacta a organização através do formulário de contactos.
+           </p>
+         </div>
+       </div>
+     </div>
+     <section id="galeria" class="min-w-screen min-h-screen bg-neutral-200 py-24 overflow-hidden select-none">
+       <div class="container mx-auto px-6 max-w-6xl mb-16">
+         <h2 class="font-ethnocentric text-4xl text-black">Highlights</h2>
+         <div class="h-1 w-20 bg-red-700 mt-2"></div>
+         <p class="font-coolvetica text-neutral-600 mt-4 max-w-xl italic"> Alguns momentos das nossas LANs. </p>
+       </div>
+       <div class="relative flex overflow-hidden mb-8 group">
+         <div class="flex animate-gallery-right whitespace-nowrap gap-6 px-3">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+         </div>
+         <div class="flex animate-gallery-right whitespace-nowrap gap-6 px-3" aria-hidden="true">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+         </div>
+       </div>
+       <div class="relative flex overflow-hidden group">
+         <div class="flex animate-gallery-left whitespace-nowrap gap-6 px-3">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+         </div>
+         <div class="flex animate-gallery-left whitespace-nowrap gap-6 px-3" aria-hidden="true">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+           <img src="./images/1.jpg" class="w-80 h-52 object-cover rounded-2xl shadow-xl border-2 border-white transition-transform duration-500 hover:scale-105">
+         </div>
+       </div>
+       <div class="flex justify-center mt-16">
+         <a href="https://www.facebook.com/PLAYNESTI/" target="_blank">
+           <button class="bg-black text-white px-8 py-4 rounded-full font-ethnocentric text-xs shadow-lg hover:bg-red-700 transition-all duration-300 active:scale-95"> Álbum Completo no Facebook </button>
+         </a>
+       </div>
+     </section>
+     <style>
 
-            <nav id="menu" class="hidden md:mt-0 md:block absolute md:static md:flex flex-col md:flex-row md:items-center font-ethnocentric absolute md:static top-16 left-0 bg-gray-100 md:bg-transparent px-4 py-2 md:p-0 rounded-lg md:rounded-none shadow-lg md:shadow-none">
-                <a href="#arena">
-                <button class="menu-btn mt-1 md:mb-0 md:mt-0">Arena</button>
-                </a>
-                <a href="#torneios">
-                <button class="menu-btn mt-1 md:mb-0 md:mt-0">Torneios</button>
-                </a>
-                <a href="#documentacao">
-                <button class="menu-btn mt-1 md:mb-0 md:mt-0">Documentação</button>
-                </a>
-                <a href="#galeria">
-                <button class="menu-btn mt-1 md:mb-0 md:mt-0">Galeria</button>
-                </a>
-                <a href="#faq">
-                <button class="menu-btn mt-1 md:mb-0 md:mt-0">FAQ</button>
-                </a>
-                <a href="#contactos">
-                <button class="menu-btn mt-1 md:mb-0 md:mt-0">Contactos</button>
-                </a>
-                <button class="menu-btn mt-1 md:mb-0 md:mt-0 break-keep">Inscreve-te</button>
-            </nav>
-        </header>
-    </div>
+       @keyframes gal-slide-left {
+         from {
+           transform: translateX(0);
+         }
 
-    <div id="topo" class="min-w-screen min-h-screen min-w-screen min-h-screen">
-        <!--Header-->
+         to {
+           transform: translateX(-100%);
+         }
+       }
 
-        <div class="flex flex-col items-center justify-center text-center min-h-screen md:flex-row md:items-center md:justify-center md:space-x-16">
-            <div>
-                <h1 class="font-ethnocentric text-white text-4xl text-shadow-lg text-center mt-50">Preparado?</h1>
-            </div>
-            <div>
-                <p class="font-coolvetica text-white text-xl text-shadow-lg text-center">A 15ª edição da PlayNESTI LAN Party volta em 2026 com mais <span class="typed-text underline decoration-3 ::decoration-4"></span> </p>
-            </div>
-            <a href="#inscreve-te" class="mt-6 mb-3 text-center font-coolvetica bg-gradient-to-tr from-red-600 to-red-900 text-white px-6 py-3 rounded-full shadow-lg size w-35 self-center"><button>Inscreve-te</button></a>
-            <div>
-                <div id="countdown" class="mt-3 fade-in text-shadow-lg w-full flex flex-col items-center justify-center">
-                    <ul class="flex space-x-6 font-ethnocentric text-white text-3xl text-shadow-lg">
-                        <li class="flex flex-col items-center"><span class="text-2xl">0</span><span class="text-base mt-1">Dias</span></li>
-                        <li class="flex flex-col items-center"><span class="text-2xl">0</span><span class="text-base mt-1">Horas</span></li>
-                        <li class="flex flex-col items-center"><span class="text-2xl">0</span><span class="text-base mt-1">Minutos</span></li>
-                        <li class="flex flex-col items-center"><span class="text-2xl">0</span><span class="text-base mt-1">Segundos</span></li>
-                    </ul>
-                </div>
-                <div class="flex justify-center mt-12 animate-bounce">
-                    <a href="#arena">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down fade-in"><path d="m6 9 6 6 6-6"/></svg>
-                    </a>
-                </div>
-            </div>
-        </div>
+       @keyframes gal-slide-right {
+         from {
+           transform: translateX(-100%);
+         }
 
-        <video autoplay muted loop id="myVideo" class="fixed right-0 bottom-0 min-w-full min-h-full object-cover -z-10">
-            <source src="./videosite.mp4" type="video/mp4">
-        </video>
-    </div>
+         to {
+           transform: translateX(0);
+         }
+       }
+         
+       .animate-gallery-left {
+         animation: gal-slide-left 50s linear infinite;
+       }
 
+       .animate-gallery-right {
+         animation: gal-slide-right 50s linear infinite;
+       }
+       .group:hover .animate-gallery-left,
+       .group:hover .animate-gallery-right {
+         animation-play-state: paused;
+       }
+     </style>
+     <div id="faq" class="min-w-screen min-h-screen bg-black py-16">
+       <div class="container mx-auto px-6 py-25 max-w-6xl text-white">
+         <h1 class="font-ethnocentric text-3xl mb-6">FAQ</h1>
+         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+           <div class="bg-red-900 p-6 rounded-lg">
+             <h2 class="font-coolvetica text-xl mb-2">O que é uma LAN PARTY?</h2>
+             <p class="font-coolvetica text-neutral-200">Montamos filas de mesas com energia e rede. Os participantes trazem os seus computadores e jogam online ou em rede local.</p>
+           </div>
+           <div class="bg-red-900 p-6 rounded-lg">
+             <h2 class="font-coolvetica text-xl mb-2">Sou menor de idade, posso participar?</h2>
+             <p class="font-coolvetica text-neutral-200">16-17 anos: sim, com autorização dos responsáveis. &lt;16: sim, com autorização e acompanhamento dos responsáveis.</p>
+           </div>
+           <div class="bg-red-900 p-6 rounded-lg">
+             <h2 class="font-coolvetica text-xl mb-2">Posso permanecer no recinto à noite?</h2>
+             <p class="font-coolvetica text-neutral-200">Sim, desde que sejam respeitadas as regras de conduta e silêncio quando aplicadas.</p>
+           </div>
+           <div class="bg-red-900 p-6 rounded-lg">
+             <h2 class="font-coolvetica text-xl mb-2">É possível tomar duche?</h2>
+             <p class="font-coolvetica text-neutral-200">Sim — a organização disponibiliza duches mediante pedido e acordo com a logística do evento.</p>
+           </div>
+           <div class="bg-red-900 p-6 rounded-lg">
+             <h2 class="font-coolvetica text-xl mb-2">O que devo trazer?</h2>
+             <p class="font-coolvetica text-neutral-200">PC/Laptop, teclado, rato, extensões com proteção, alimentação, e identificação. Recomenda-se também adaptadores de rede se necessário.</p>
+           </div>
+           <div class="bg-red-900 p-6 rounded-lg">
+             <h2 class="font-coolvetica text-xl mb-2">Existe estacionamento?</h2>
+             <p class="font-coolvetica text-neutral-200">Sim — há estacionamento próximo ao pavilhão. Consulta a planta da arena para mais detalhes.</p>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div id="contactos" class="min-w-screen min-h-screen bg-neutral-200 py-25">
+       <div class="container mx-auto px-6 max-w-6xl">
+         <div class="mb-12 text-center md:text-left">
+           <h2 class="font-ethnocentric text-4xl text-black">Contactos</h2>
+           <div class="h-1 w-20 bg-red-700 mt-2 mx-auto md:mx-0"></div>
+         </div>
+         <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+           <div class="flex flex-col justify-center">
+             <p class="font-coolvetica text-xl text-neutral-800 mb-8"> Tens alguma dúvida sobre as inscrições ou os torneios? Estamos aqui para ajudar. </p>
+             <div class="space-y-6">
+               <div class="flex items-center space-x-4 group">
+                 <div class="bg-red-700 p-3 rounded-full text-white group-hover:bg-red-600 transition-colors">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <path d="m22 2-7 20-4-9-9-4Z" />
+                     <path d="M22 2 11 13" />
+                   </svg>
+                 </div>
+                 <div>
+                   <h4 class="font-ethnocentric text-sm text-gray-500 uppercase">Email</h4>
+                   <p class="font-coolvetica text-lg font-bold">geral@nestiuac.pt</p>
+                 </div>
+               </div>
+               <div class="flex items-center space-x-4 group">
+                 <div class="bg-red-700 p-3 rounded-full text-white group-hover:bg-red-600 transition-colors">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                     <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                   </svg>
+                 </div>
+                 <div>
+                   <h4 class="font-ethnocentric text-sm text-gray-500 uppercase">Instagram</h4>
+                   <p class="font-coolvetica text-lg font-bold">@nestiuac</p>
+                 </div>
+               </div>
+             </div>
+             <div class="mt-12">
+               <h3 class="font-ethnocentric text-sm text-gray-500 uppercase mb-4">Segue-nos</h3>
+               <div class="flex space-x-4">
+                 <a href="#" class="p-3 bg-white shadow-md rounded-full hover:bg-red-700 hover:text-white transition-all">FB</a>
+                 <a href="#" class="p-3 bg-white shadow-md rounded-full hover:bg-red-700 hover:text-white transition-all">IG</a>
+                 <a href="#" class="p-3 bg-white shadow-md rounded-full hover:bg-red-700 hover:text-white transition-all">DC</a>
+               </div>
+             </div>
+           </div>
+           <div class="bg-white p-8 rounded-3xl shadow-2xl border border-neutral-100">
+             <form action="#" method="POST" class="space-y-4">
+               <div>
+                 <label class="block font-ethnocentric text-xs mb-2 text-gray-600">Nome</label>
+                 <input type="text" placeholder="O teu nome" class="w-full px-4 py-3 rounded-xl bg-neutral-100 border-transparent focus:border-red-600 focus:bg-white focus:ring-0 transition-all font-coolvetica">
+               </div>
+               <div>
+                 <label class="block font-ethnocentric text-xs mb-2 text-gray-600">Email</label>
+                 <input type="email" placeholder="teu@email.com" class="w-full px-4 py-3 rounded-xl bg-neutral-100 border-transparent focus:border-red-600 focus:bg-white focus:ring-0 transition-all font-coolvetica">
+               </div>
+               <div>
+                 <label class="block font-ethnocentric text-xs mb-2 text-gray-600">Mensagem</label>
+                 <textarea rows="4" placeholder="Como podemos ajudar?" class="w-full px-4 py-3 rounded-xl bg-neutral-100 border-transparent focus:border-red-600 focus:bg-white focus:ring-0 transition-all font-coolvetica"></textarea>
+               </div>
+               <button type="submit" class="w-full bg-gradient-to-tr from-red-600 to-red-900 text-white font-ethnocentric py-4 rounded-xl shadow-lg hover:brightness-110 transition-all"> Enviar Mensagem </button>
+             </form>
+           </div>
+         </div>
+       </div>
+     </div>
+     <footer class="bg-black py-10 text-center">
+       <p class="font-ethnocentric text-gray-600 text-sm">© 2026 PLAYNESTI - NESTI UAc</p>
+       <p class="font-coolvetica text-gray-800 mt-2 italic text-xs uppercase tracking-widest">Com amor às LANS.</p>
+     </footer>
+     <script>
 
-    <div id="arena" class="min-w-screen min-h-screen bg-black flex flex-col justify-between overflow-hidden">
+       document.getElementById("menu-toggle").addEventListener("click", function() {
+         document.getElementById("menu").classList.toggle("hidden");
+       });
+     </script>
+     <script>
 
-<div class="w-full overflow-hidden">
-    <div class="inline-flex flex-nowrap overflow-hidden">
-      <ul class="flex items-center justify-center [&_li]:mx-3 infinite-scroll-left pt-5 whitespace-nowrap">
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-      </ul>
-        <ul class="flex items-center justify-center [&_li]:mx-3 infinite-scroll-left pt-5 whitespace-nowrap" aria-hidden="true">
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-      </ul>
-        <ul class="flex items-center justify-center [&_li]:mx-3 infinite-scroll-left pt-5 whitespace-nowrap" aria-hidden="true">
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="flex-2 flex flex-col justify-center items-center text-white text-center">
-    <h2 class="font-ethnocentric text-4xl">Açor Arena</h2>
-    <p class="font-coolvetica mt-4 max-w-lg text-neutral-300">A nossa segunda casa, situada na Vila Franca do Campo, São Miguel - Açores
-    </p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3156.1322321229213!2d-25.443499123534675!3d37.71657391550954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb5d2643a9866f95%3A0x5f56d2a33cf24892!2sA%C3%A7or%20Arena%20Pavilhao%20Multiusos!5e0!3m2!1sen!2spt!4v1759937204450!5m2!1sen!2spt" width="450" height="450" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="py-15 px-15"></iframe>
-    <a href=""><p class="font-coolvetica underline decoration-2">Clica aqui para visualizar a planta da arena!</p></a>
-  </div>
-
-  <div class="w-full overflow-hidden mb-6">
-    <div class="inline-flex flex-nowrap overflow-hidden">
-      <ul class="flex items-center justify-center [&_li]:mx-3 infinite-scroll-right pt-5 whitespace-nowrap" aria-hidden="true">
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-      </ul>
-        <ul class="flex items-center justify-center [&_li]:mx-3 infinite-scroll-right pt-5 whitespace-nowrap">
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-      </ul>
-        <ul class="flex items-center justify-center [&_li]:mx-3 infinite-scroll-right pt-5 whitespace-nowrap">
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-      </ul>
-        <ul class="flex items-center justify-center [&_li]:mx-3 infinite-scroll-right pt-5 whitespace-nowrap">
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-        <li><h1 class="font-ethnocentric bold text-gray-700">LAN PARTY</h1></li>
-      </ul>
-    </div>
-  </div>
-
-</div>
-    <div id="torneios" class="min-w-screen min-h-screen bg-neutral-200">
-    </div>
-    <div id="documentacao" class="min-w-screen min-h-screen bg-black">
-    </div>
-    <div id="galeria" class="min-w-screen min-h-screen bg-neutral-200">
-    </div>
-    <div id="faq" class="min-w-screen min-h-screen bg-black">
-        <div class="container mx-auto px-4 py-25">
-            <h1 class="font-ethnocentric bold text-white text-2xl mb-4">FAQ</h1>
-            <div class="bg-red-900 p-4 rounded-lg">
-                <h2 class="font-coolvetica bold text-white">O que é uma LAN PARTY?</h2>
-                <p class="font-coolvetica text-neutral-200">Nós montamos filas de mesas e disponibilizamos energia e cabos de rede entre elas.<br>Os participantes trazem os seus próprios computadores e conectam se à rede local para jogar.</p>
-            </div>
-            <div class="bg-red-900 p-4 rounded-lg mt-4">
-                <h2 class="font-coolvetica bold text-white">Sou menor de idade, posso participar?</h2>
-                <p class="font-coolvetica text-neutral-200">16 - 17 anos: Sim, desde que entregue a autorização dos responsáveis no ato da inscrição.<br> < 16 anos: Sim, desde que entregue a autorização dos responsáveis no ato da inscrição e acompanhados dos mesmos durante a LAN Party.</p>
-            </div>
-            <div class="bg-red-900 p-4 rounded-lg mt-4">
-                <h2 class="font-coolvetica bold text-white">Posso permanecer no recinto à noite?</h2>
-                <p class="font-coolvetica text-neutral-200">Sim, é permitido permanecer no recinto durante a noite, desde que respeitadas as regras de conduta e silêncio <span class="underline decoration-2">quando aplicadas</span>.</p>
-            </div>
-            <div class="bg-red-900 p-4 rounded-lg mt-4">
-                <h2 class="font-coolvetica bold text-white">É possivel tomar duche?</h2>
-                <p class="font-coolvetica text-neutral-200">Sim, a organização disponibiliza duches para os participantes, aquando solicitados.</p>
-            </div>  
-        </div>
-    </div>
-    <div id="contactos" class="min-w-screen min-h-screen bg-neutral-200">
-    </div>
-
-
-
-
-
-
-
-    <script>
-        // Mobile toggle logic
-        document.getElementById("menu-toggle").addEventListener("click", function () {
-          document.getElementById("menu").classList.toggle("hidden");
-        });
-    </script>
-    <script>
-        // Mobile toggle logic for all elements with class "menu-btn"
-        document.querySelectorAll(".menu-btn").forEach(function (btn) {
-            btn.addEventListener("click", function () {
-                document.getElementById("menu").classList.toggle("hidden");
-            });
-        });
-    </script>
-
-
-
-</body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</html>
+       document.querySelectorAll(".menu-btn").forEach(function(btn) {
+         btn.addEventListener("click", function() {
+           document.getElementById("menu").classList.toggle("hidden");
+         });
+       });
+     </script>
+   </body>
+ </html>
