@@ -1,26 +1,27 @@
-var countDownDate = new Date("April 17, 2026 16:00:00").getTime();
-
+var countDownDate = new Date("April 1, 2026 16:00:00").getTime();
+var endDate = new Date("April 3, 2026 18:30:00").getTime();
 var x = setInterval(function () {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
 
-	var now = new Date().getTime();
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-	var distance = countDownDate - now;
+    if (document.getElementById("days")) {
+        document.getElementById("days").innerText = days;
+        document.getElementById("hours").innerText = hours;
+        document.getElementById("minutes").innerText = minutes;
+        document.getElementById("seconds").innerText = seconds;
+    }
 
-	var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-	var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-	document.getElementById("countdown").innerHTML = `
-	  <ul class="flex flex-col space-x-6 text-center font-ethnocentric text-white text-3xl text-shadow-lg mt-10">
-	    <li class="flex flex-col items-center mr-0"><span class="text-3xl">${days}</span><span class="text-base mt-1">Dias</span></li>
-	    <li class="flex flex-col items-center mr-0"><span class="text-3xl">${hours}</span><span class="text-base mt-1">Horas</span></li>
-	    <li class="flex flex-col items-center mr-0"><span class="text-3xl">${minutes}</span><span class="text-base mt-1">Minutos</span></li>
-	    <li class="flex flex-col items-center mr-0"><span class="text-3xl">${seconds}</span><span class="text-base mt-1">Segundos</span></li>
-	  </ul>`;
-
-	if (distance < 0) {
-		clearInterval(x);
-	}
-	
+    if (distance < 0) {
+        clearInterval(x);
+        if (document.getElementById("countdown")) {
+            document.getElementById("countdown").innerHTML = 
+                `<span class="font-ethnocentric text-white text-xl">BEM VINDOS!</span>"`;
+        }
+    }
+    
 }, 1000);
