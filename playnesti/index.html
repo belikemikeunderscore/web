@@ -1237,10 +1237,11 @@
       </div>
     </div>
     <footer class="bg-black py-10 text-center">
-      <p class="font-ethnocentric text-gray-600 text-sm">© 2026 PLAYNESTI - POWERED BY NESTI</p>
+      <p class="font-ethnocentric text-gray-600 text-sm">© <span id="footer-year"></span> PLAYNESTI - POWERED BY NESTI</p>
       <p class="font-coolvetica text-gray-900 mt-2 text-xs">© Miguel Brás</p>
     </footer>
     <script>
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
       document.addEventListener('DOMContentLoaded', () => {
         const track = document.getElementById('marquee-track');
         if (track) {

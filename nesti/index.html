@@ -30,12 +30,9 @@
       --accent-dark: #1590b8;
       --accent-glow: rgba(32,175,222,0.35);
     }
-
-
     .font-ethnocentric { font-family: 'Ethnocentric', sans-serif; }
-    .font-coolvetica     { font-family: 'Coolvetica', sans-serif; }
+    .font-coolvetica   { font-family: 'Coolvetica', sans-serif; }
 
-  
     header#site-header {
       max-width: 220px;
       transition: max-width 380ms cubic-bezier(.2,.9,.25,1), box-shadow 350ms ease;
@@ -86,12 +83,7 @@
       }
     }
 
-    
-
-
-
     .reveal { opacity: 1; transform: none; }
-
 
     body::before {
       content: '';
@@ -102,24 +94,95 @@
       opacity: .4;
     }
 
-
     .accent-line { width: 3rem; height: 3px; background: var(--accent); display: block; }
-
 
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #f0f0f0; }
     ::-webkit-scrollbar-thumb { background: var(--accent-dark); border-radius: 3px; }
 
-    .text-accent  { color: var(--accent); }
-    .bg-accent    { background-color: var(--accent); }
-    .border-accent{ border-color: var(--accent); }
-    .glow-accent  { box-shadow: 0 0 22px var(--accent-glow); }
+    .text-accent   { color: var(--accent); }
+    .bg-accent     { background-color: var(--accent); }
+    .border-accent { border-color: var(--accent); }
+    .glow-accent   { box-shadow: 0 0 22px var(--accent-glow); }
     .hero-grid {
       background-image:
         linear-gradient(rgba(32,175,222,.07) 1px, transparent 1px),
         linear-gradient(90deg, rgba(32,175,222,.07) 1px, transparent 1px);
       background-size: 48px 48px;
     }
+
+    /* ── Team card: collapse to image height, overlay text ── */
+    .team-card > .p-5,
+    .team-card > .p-4 {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 0.75rem 1rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.62) 0%, transparent 100%);
+      z-index: 4;
+      transition: opacity 0.22s ease;
+    }
+    .team-card > .p-5 p,
+    .team-card > .p-4 p {
+      color: rgba(255,255,255,0.6) !important;
+      font-size: 0.7rem;
+      margin-bottom: 0.15rem;
+    }
+    .team-card > .p-5 h4,
+    .team-card > .p-4 h4 {
+      color: white !important;
+      font-size: 0.8rem;
+    }
+    /* fade name out when social buttons appear */
+    .team-card:hover > .p-5,
+    .team-card:hover > .p-4 {
+      opacity: 0;
+    }
+
+    /* ── Team card social overlay ── */
+    .team-card {
+      position: relative;
+    }
+    .team-card .social-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.06) 45%, transparent 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      gap: 8px;
+      padding-bottom: 12px;
+      padding-left: 12px;
+      opacity: 0;
+      transform: translateY(5px);
+      transition: opacity 0.25s ease, transform 0.25s cubic-bezier(.2,.9,.25,1);
+      pointer-events: none;
+      z-index: 5;
+    }
+    .team-card:hover .social-overlay,
+    .team-card:focus-within .social-overlay {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.13);
+      backdrop-filter: blur(8px);
+      color: white;
+      transition: background 0.18s, border-color 0.18s, transform 0.18s;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .social-btn:hover { transform: scale(1.13); }
+    .social-btn.fb:hover { background: #1877F2; border-color: #1877F2; }
+    .social-btn.ig:hover { background: #E1306C; border-color: #E1306C; }
+    .social-btn svg { width: 16px; height: 16px; fill: currentColor; }
   </style>
   </head>
   <body class="bg-white font-sora text-neutral-900 antialiased">
@@ -137,24 +200,22 @@
         <a href="#equipa" class="font-ethnocentric text-[9px] px-2.5 py-1 text-neutral-400 hover:text-neutral-900 transition-colors uppercase tracking-widest">Equipa</a>
         <a href="#contatos" class="font-ethnocentric text-[9px] px-2.5 py-1 text-neutral-400 hover:text-neutral-900 transition-colors uppercase tracking-widest">Contactos</a>
         <a href="http://playnesti.uac.pt/" target="_blank" class="ml-3">
-          <button class=" font-ethnocentric bg-accent text-white text-[9px] px-4 py-2 rounded-full hover:opacity-90 transition-all uppercase shadow-[0_0_14px_var(--accent-glow)] cursor-pointer">PlayNESTI</button>
+          <button class="font-ethnocentric bg-accent text-white text-[9px] px-4 py-2 rounded-full hover:opacity-90 transition-all uppercase shadow-[0_0_14px_var(--accent-glow)] cursor-pointer">PlayNESTI</button>
         </a>
       </nav>
     </header>
-    <section id="topo" class="relative min-h-screen flex items-center overflow-hidden hero-grid bg-white " style="background-image: url('./images/hero.webp'); background-size: cover; background-position: center;">
 
-  <div class="absolute inset-0 bg-black/60 z-0"></div>
+    <section id="topo" class="relative min-h-screen flex items-center overflow-hidden hero-grid bg-white" style="background-image: url('./images/hero.webp'); background-size: cover; background-position: center;">
+      <div class="absolute inset-0 bg-black/60 z-0"></div>
       <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[var(--accent)] rounded-full blur-[160px] opacity-[0.06] pointer-events-none"></div>
       <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[var(--accent)] rounded-full blur-[130px] opacity-[0.04] pointer-events-none"></div>
       <div class="container mx-auto px-6 py-24 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 max-w-6xl">
         <div class="flex-1 text-center md:text-left">
           <p class="font-ethnocentric text-[10px] tracking-[0.5em] text-accent mb-5 uppercase reveal">Núcleo de Estudantes de Informática</p>
-          <h1 class="font-ethnocentric text-6xl md:text-8xl text-neutral-50 leading-none mb-6 reveal" style="transition-delay:.1s"> NESTI </h1>
-          <p class="font-coolvetica text-neutral-50 max-w-md leading-relaxed mb-10 reveal" style="transition-delay:.2s"> Representamos os estudantes de Informática da Universidade dos Açores desde <span class="text-accent font-semibold">janeiro de 2012</span>. Ligando alunos, docentes e comunidade académica. </p>
+          <h1 class="font-ethnocentric text-6xl md:text-8xl text-neutral-50 leading-none mb-6 reveal" style="transition-delay:.1s">NESTI</h1>
+          <p class="font-coolvetica text-neutral-50 max-w-md leading-relaxed mb-10 reveal" style="transition-delay:.2s">Representamos os estudantes de Informática da Universidade dos Açores desde <span class="text-accent font-semibold">janeiro de 2012</span>. Ligando alunos, docentes e comunidade académica.</p>
           <div class="flex flex-wrap gap-4 justify-center md:justify-start reveal" style="transition-delay:.3s">
-            <a href="#sobre">
-              <button class="bg-accent text-white font-coolvetica text-xs px-8 py-4 rounded-full shadow-[0_0_20px_var(--accent-glow)] hover:scale-105 transition-transform active:scale-95 cursor-pointer">Conhece-nos</button>
-            </a>
+            <a href="#sobre"><button class="bg-accent text-white font-coolvetica text-xs px-8 py-4 rounded-full shadow-[0_0_20px_var(--accent-glow)] hover:scale-105 transition-transform active:scale-95 cursor-pointer">Conhece-nos</button></a>
             <a href="http://playnesti.uac.pt/" target="_blank" class="font-coolvetica text-neutral-50 hover:text-neutral-500 transition-colors py-3 px-4 text-sm">Ver PlayNESTI →</a>
           </div>
         </div>
@@ -163,35 +224,23 @@
             <p class="font-ethnocentric text-[9px] tracking-[0.4em] text-accent mb-6 text-center uppercase">Segue-nos</p>
             <div class="flex flex-col gap-3">
               <a href="https://facebook.com/nestiuac" target="_blank" class="flex items-center gap-4 p-3 rounded-xl bg-white border border-neutral-100 hover:border-[#1877F2] hover:bg-[#1877F2]/5 transition-all group/s shadow-sm">
-                <svg class="w-5 h-5 fill-neutral-400 group-hover/s:fill-[#1877F2] transition-colors" viewBox="0 0 24 24">
-                  <path d="M12 2.03998C6.5 2.03998 2 6.52998 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.84998C10.44 7.33998 11.93 5.95998 14.22 5.95998C15.31 5.95998 16.45 6.14998 16.45 6.14998V8.61998H15.19C13.95 8.61998 13.56 9.38998 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C18.34 21.21 22 17.06 22 12.06C22 6.52998 17.5 2.03998 12 2.03998Z" />
-                </svg>
+                <svg class="w-5 h-5 fill-neutral-400 group-hover/s:fill-[#1877F2] transition-colors" viewBox="0 0 24 24"><path d="M12 2.03998C6.5 2.03998 2 6.52998 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.84998C10.44 7.33998 11.93 5.95998 14.22 5.95998C15.31 5.95998 16.45 6.14998 16.45 6.14998V8.61998H15.19C13.95 8.61998 13.56 9.38998 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C18.34 21.21 22 17.06 22 12.06C22 6.52998 17.5 2.03998 12 2.03998Z"/></svg>
                 <span class="font-coolvetica text-sm text-neutral-400 group-hover/s:text-[#1877F2] transition-colors">facebook.com/nestiuac</span>
               </a>
               <a href="https://instagram.com/nestiuac" target="_blank" class="flex items-center gap-4 p-3 rounded-xl bg-white border border-neutral-100 hover:border-[#E1306C] hover:bg-[#E1306C]/5 transition-all group/s shadow-sm">
-                <svg class="w-5 h-5 fill-neutral-400 group-hover/s:fill-[#E1306C] transition-colors" viewBox="0 0 24 24">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" />
-                  <path d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z" />
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z" />
-                </svg>
+                <svg class="w-5 h-5 fill-neutral-400 group-hover/s:fill-[#E1306C] transition-colors" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"/><path d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z"/></svg>
                 <span class="font-coolvetica text-sm text-neutral-400 group-hover/s:text-[#E1306C] transition-colors">@nestiuac</span>
               </a>
               <a href="https://www.youtube.com/user/UACNesti" target="_blank" class="flex items-center gap-4 p-3 rounded-xl bg-white border border-neutral-100 hover:border-[#FF0000] hover:bg-[#FF0000]/5 transition-all group/s shadow-sm">
-                <svg class="w-5 h-5 fill-neutral-400 group-hover/s:fill-[#FF0000] transition-colors" viewBox="0 0 24 24">
-                  <path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z" />
-                </svg>
+                <svg class="w-5 h-5 fill-neutral-400 group-hover/s:fill-[#FF0000] transition-colors" viewBox="0 0 24 24"><path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/></svg>
                 <span class="font-coolvetica text-sm text-neutral-400 group-hover/s:text-[#FF0000] transition-colors">NESTI</span>
               </a>
               <a href="https://x.com/nestiuac" target="_blank" class="flex items-center gap-4 p-3 rounded-xl bg-white border border-neutral-100 hover:border-[#000000] hover:bg-[#000000]/5 transition-all group/s shadow-sm">
-                <svg class="w-4 h-4 fill-neutral-400 group-hover/s:fill-[#000000] transition-colors" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
+                <svg class="w-4 h-4 fill-neutral-400 group-hover/s:fill-[#000000] transition-colors" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 <span class="font-coolvetica text-sm text-neutral-400 group-hover/s:text-[#000000] transition-colors">@nestiuac</span>
               </a>
               <a href="https://www.twitch.tv/playnesti" target="_blank" class="flex items-center gap-4 p-3 rounded-xl bg-white border border-neutral-100 hover:border-[#9146FF] hover:bg-[#9146FF]/5 transition-all group/s shadow-sm">
-                <svg class="w-5 h-5 fill-neutral-400 group-hover/s:fill-[#9146FF] transition-colors" viewBox="0 0 24 24">
-                  <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z" />
-                </svg>
+                <svg class="w-5 h-5 fill-neutral-400 group-hover/s:fill-[#9146FF] transition-colors" viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
                 <span class="font-coolvetica text-sm text-neutral-400 group-hover/s:text-[#9146FF] transition-colors">playnesti</span>
               </a>
             </div>
@@ -199,6 +248,7 @@
         </div>
       </div>
     </section>
+
     <section id="sobre" class="bg-white py-28 relative overflow-hidden">
       <div class="absolute -top-32 -right-32 w-[600px] h-[600px] bg-[var(--accent)] rounded-full blur-[200px] opacity-[0.06] pointer-events-none"></div>
       <div class="container mx-auto px-6 max-w-6xl relative z-10">
@@ -208,61 +258,34 @@
             <h2 class="font-ethnocentric text-5xl md:text-6xl text-neutral-900 leading-none mb-2">Quem</h2>
             <h2 class="font-ethnocentric text-5xl md:text-6xl leading-none mb-6" style="color:var(--accent)">Somos</h2>
             <span class="accent-line mb-8 block"></span>
-            <p class="font-coolvetica text-neutral-500 leading-relaxed mb-6 max-w-xl"> O <span class="text-neutral-900 font-semibold">Núcleo de Estudantes de Informática da Universidade dos Açores</span>, NESTI, é uma estrutura representativa dos estudantes dos cursos da área de Informática lecionados na Universidade dos Açores, fundado em janeiro de 2012. </p>
-            <p class="font-coolvetica text-neutral-400 leading-relaxed mb-6 max-w-xl"> Tem como objetivo principal a organização de atividades no âmbito da informática, sempre com o intuito de relacionar, incentivar e estimular a participação e comunicação entre os docentes, discentes, comunidade académica e restante sociedade. </p>
-            <p class="font-coolvetica text-neutral-400 leading-relaxed max-w-xl"> A sua divulgação nos meios de comunicação social são uma forma de apresentar os projetos e trabalhos realizados pelos alunos, refletindo o interesse, dinamismo e capacidade de inovação. </p>
+            <p class="font-coolvetica text-neutral-500 leading-relaxed mb-6 max-w-xl">O <span class="text-neutral-900 font-semibold">Núcleo de Estudantes de Informática da Universidade dos Açores</span>, NESTI, é uma estrutura representativa dos estudantes dos cursos da área de Informática lecionados na Universidade dos Açores, fundado em janeiro de 2012.</p>
+            <p class="font-coolvetica text-neutral-400 leading-relaxed mb-6 max-w-xl">Tem como objetivo principal a organização de atividades no âmbito da informática, sempre com o intuito de relacionar, incentivar e estimular a participação e comunicação entre os docentes, discentes, comunidade académica e restante sociedade.</p>
+            <p class="font-coolvetica text-neutral-400 leading-relaxed max-w-xl">A sua divulgação nos meios de comunicação social são uma forma de apresentar os projetos e trabalhos realizados pelos alunos, refletindo o interesse, dinamismo e capacidade de inovação.</p>
           </div>
           <div class="md:w-[420px] flex-shrink-0 reveal" style="transition-delay:.1s">
             <div class="relative rounded-2xl overflow-hidden border border-neutral-200 shadow-sm bg-neutral-100" style="aspect-ratio:4/3;">
               <div class="sobre-slider absolute inset-0">
-                <div class="sobre-slide active absolute inset-0 transition-opacity duration-700">
-                  <img src="./images/sobre1.jpg" alt="NESTI" class="w-full h-full object-cover" onerror="this.parentElement.style.background='#f3f4f6'">
-                </div>
-                <div class="sobre-slide absolute inset-0 opacity-0 transition-opacity duration-700">
-                  <img src="./images/sobre2.jpg" alt="NESTI" class="w-full h-full object-cover" onerror="this.parentElement.style.background='#f3f4f6'">
-                </div>
-                <div class="sobre-slide absolute inset-0 opacity-0 transition-opacity duration-700">
-                  <img src="./images/sobre3.jpg" alt="NESTI" class="w-full h-full object-cover" onerror="this.parentElement.style.background='#f3f4f6'">
-                </div>
-                <div class="sobre-slide absolute inset-0 opacity-0 transition-opacity duration-700">
-                  <img src="./images/sobre4.jpg" alt="NESTI" class="w-full h-full object-cover" onerror="this.parentElement.style.background='#f3f4f6'">
-                </div>
+                <div class="sobre-slide active absolute inset-0 transition-opacity duration-700"><img src="./images/sobre1.jpg" alt="NESTI" class="w-full h-full object-cover" onerror="this.parentElement.style.background='#f3f4f6'"></div>
+                <div class="sobre-slide absolute inset-0 opacity-0 transition-opacity duration-700"><img src="./images/sobre2.jpg" alt="NESTI" class="w-full h-full object-cover" onerror="this.parentElement.style.background='#f3f4f6'"></div>
+                <div class="sobre-slide absolute inset-0 opacity-0 transition-opacity duration-700"><img src="./images/sobre3.jpg" alt="NESTI" class="w-full h-full object-cover" onerror="this.parentElement.style.background='#f3f4f6'"></div>
+                <div class="sobre-slide absolute inset-0 opacity-0 transition-opacity duration-700"><img src="./images/sobre4.jpg" alt="NESTI" class="w-full h-full object-cover" onerror="this.parentElement.style.background='#f3f4f6'"></div>
               </div>
               <div class="sobre-placeholder absolute inset-0 flex flex-col items-center justify-center text-neutral-300 pointer-events-none">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <polyline points="21 15 16 10 5 21" />
-                </svg>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
                 <p class="font-coolvetica text-xs mt-2">Adiciona imagens aos slides</p>
               </div>
             </div>
           </div>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 reveal" style="transition-delay:.2s">
-          <div class="bg-neutral-50 border border-neutral-200 rounded-2xl p-6 hover:border-[var(--accent)] transition-all">
-            <p class="font-ethnocentric text-4xl text-accent mb-1">2012</p>
-            <p class="font-coolvetica text-neutral-400 text-sm">Ano de fundação</p>
-          </div>
-          <div class="bg-neutral-50 border border-neutral-200 rounded-2xl p-6 hover:border-[var(--accent)] transition-all">
-            <p class="font-ethnocentric text-3xl text-neutral-800 mb-1">20+</p>
-            <p class="font-coolvetica text-neutral-400 text-xs">Eventos e participações</p>
-          </div>
-          <div class="bg-neutral-50 border border-neutral-200 rounded-2xl p-6 hover:border-[var(--accent)] transition-all">
-            <p class="font-ethnocentric text-3xl text-neutral-800 mb-1">42+</p>
-            <p class="font-coolvetica text-neutral-400 text-xs">Sócios efetivos</p>
-          </div>
-          <div class="bg-neutral-50 border border-[var(--accent)]/20 rounded-2xl p-6">
-            <p class="font-ethnocentric text-[9px] text-accent tracking-widest uppercase mb-3">Atividades</p>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="font-coolvetica text-xs bg-white border border-neutral-200 text-neutral-500 px-2 py-0.5 rounded-full">Workshops</span>
-              <span class="font-coolvetica text-xs bg-white border border-neutral-200 text-neutral-500 px-2 py-0.5 rounded-full">Seminários</span>
-              <span class="font-coolvetica text-xs bg-white border border-neutral-200 text-neutral-500 px-2 py-0.5 rounded-full">PlayNESTI</span>
-            </div>
-          </div>
+          <div class="bg-neutral-50 border border-neutral-200 rounded-2xl p-6 hover:border-[var(--accent)] transition-all"><p class="font-ethnocentric text-4xl text-accent mb-1">2012</p><p class="font-coolvetica text-neutral-400 text-sm">Ano de fundação</p></div>
+          <div class="bg-neutral-50 border border-neutral-200 rounded-2xl p-6 hover:border-[var(--accent)] transition-all"><p class="font-ethnocentric text-3xl text-neutral-800 mb-1">20+</p><p class="font-coolvetica text-neutral-400 text-xs">Eventos e participações</p></div>
+          <div class="bg-neutral-50 border border-neutral-200 rounded-2xl p-6 hover:border-[var(--accent)] transition-all"><p class="font-ethnocentric text-3xl text-neutral-800 mb-1">42+</p><p class="font-coolvetica text-neutral-400 text-xs">Sócios efetivos</p></div>
+          <div class="bg-neutral-50 border border-[var(--accent)]/20 rounded-2xl p-6"><p class="font-ethnocentric text-[9px] text-accent tracking-widest uppercase mb-3">Atividades</p><div class="flex flex-wrap gap-1.5"><span class="font-coolvetica text-xs bg-white border border-neutral-200 text-neutral-500 px-2 py-0.5 rounded-full">Workshops</span><span class="font-coolvetica text-xs bg-white border border-neutral-200 text-neutral-500 px-2 py-0.5 rounded-full">Seminários</span><span class="font-coolvetica text-xs bg-white border border-neutral-200 text-neutral-500 px-2 py-0.5 rounded-full">PlayNESTI</span></div></div>
         </div>
       </div>
     </section>
+
     <section id="lidet" class="bg-white py-28 relative overflow-hidden">
       <div class="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-[200px] opacity-[0.1] pointer-events-none" style="background:#046B3F"></div>
       <div class="container mx-auto px-6 max-w-6xl relative z-10">
@@ -270,19 +293,11 @@
           <div class="md:w-[420px] flex-shrink-0 reveal" style="transition-delay:.05s">
             <div class="relative rounded-2xl overflow-hidden shadow-sm bg-neutral-100 border-2" style="aspect-ratio:4/3; border-color:#046B3F22;">
               <div class="lidet-slider absolute inset-0">
-                <div class="lidet-slide active absolute inset-0 transition-opacity duration-700">
-                  <img src="./images/lidet1.jpg" alt="LIDET" class="w-full h-full object-cover" onerror="this.parentElement.style.background='#f3f4f6'">
-                </div>
-                <div class="lidet-slide absolute inset-0 opacity-0 transition-opacity duration-700">
-                  <img src="./images/lidet2.jpg" alt="LIDET" class="w-full h-full object-cover" onerror="this.parentElement.style.background='#f3f4f6'">
-                </div>
+                <div class="lidet-slide active absolute inset-0 transition-opacity duration-700"><img src="./images/lidet1.jpg" alt="LIDET" class="w-full h-full object-cover" onerror="this.parentElement.style.background='#f3f4f6'"></div>
+                <div class="lidet-slide absolute inset-0 opacity-0 transition-opacity duration-700"><img src="./images/lidet2.jpg" alt="LIDET" class="w-full h-full object-cover" onerror="this.parentElement.style.background='#f3f4f6'"></div>
               </div>
               <div class="lidet-placeholder absolute inset-0 flex flex-col items-center justify-center text-neutral-300 pointer-events-none">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <polyline points="21 15 16 10 5 21" />
-                </svg>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
                 <p class="font-coolvetica text-xs mt-2">Adiciona imagens aos slides</p>
               </div>
             </div>
@@ -291,13 +306,15 @@
             <p class="font-ethnocentric text-[10px] tracking-[0.5em] mb-4 uppercase" style="color:#046B3F">O Nosso Espaço</p>
             <h2 class="font-ethnocentric text-5xl md:text-6xl text-neutral-900 leading-none mb-6">LIDET</h2>
             <span class="mb-8 block" style="width:3rem; height:3px; background:#046B3F;"></span>
-            <p class="font-coolvetica text-neutral-500 leading-relaxed mb-5 max-w-xl"> O <span class="text-neutral-900 font-semibold">Laboratório de Investigação Desenvolvimento e Experimentação Tecnológica</span> é o espaço oficial do NESTI, gentilmente cedido pela Universidade dos Açores. Situado no edifício de Arquitetura do Campus de Ponta Delgada. </p>
-            <p class="font-coolvetica text-neutral-400 leading-relaxed mb-5 max-w-xl"> Possui uma sala de estudo e convívio, sala para a direção, acesso rápido à internet e equipamento adequado à utilização informática. O LIDET é um local de trabalho de grupo, projetos e convívio — um pilar fundamental para o sucesso académico de todos. </p>
-            <p class="font-coolvetica text-neutral-400 leading-relaxed max-w-xl text-sm"> O horário de funcionamento está sempre dependente do horário de funcionamento da Universidade dos Açores. </p>
+            <span class="font-coolvetica text-red-800">Atualmente fechado por motivos alheios ao NESTI.</span>
+            <p class="font-coolvetica text-neutral-500 leading-relaxed mb-5 max-w-xl">O <span class="text-neutral-900 font-semibold">Laboratório de Investigação Desenvolvimento e Experimentação Tecnológica</span> é o espaço oficial do NESTI, gentilmente cedido pela Universidade dos Açores. Situado no edifício de Arquitetura do Campus de Ponta Delgada.</p>
+            <p class="font-coolvetica text-neutral-400 leading-relaxed mb-5 max-w-xl">Possui uma sala de estudo e convívio, sala para a direção, acesso rápido à internet e equipamento adequado à utilização informática. O LIDET é um local de trabalho de grupo, projetos e convívio — um pilar fundamental para o sucesso académico de todos.</p>
+            <p class="font-coolvetica text-neutral-400 leading-relaxed max-w-xl text-sm">O horário de funcionamento está sempre dependente do horário de funcionamento da Universidade dos Açores.</p>
           </div>
         </div>
       </div>
     </section>
+
     <section id="equipa" class="bg-neutral-50 py-28 relative overflow-hidden">
       <div class="absolute top-1/2 right-0 w-[400px] h-[400px] bg-[var(--accent)] rounded-full blur-[180px] opacity-[0.04] pointer-events-none"></div>
       <div class="container mx-auto px-6 max-w-6xl relative z-10">
@@ -306,20 +323,22 @@
           <h2 class="font-ethnocentric text-5xl md:text-6xl text-neutral-900 leading-none mb-4">A Equipa</h2>
           <span class="accent-line"></span>
         </div>
+
         <!-- DIREÇÃO -->
         <div class="mb-10">
           <h3 class="font-ethnocentric text-xl text-neutral-700 mb-8 flex items-center gap-3 reveal">
             <span class="w-2 h-2 rounded-full bg-accent"></span> Direção
           </h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
-            <div class="bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal" style="transition-delay:.05s">
-              <div class="h-44 bg-neutral-100 overflow-hidden">
-                <img src="" alt="Henrique Botelho Oliveira" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+          <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+
+            <div class="team-card bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal"
+                 data-facebook="https://www.facebook.com/enriqb.o"
+                 data-instagram="https://www.instagram.com/enriqueb.o/"
+                 style="transition-delay:.05s">
+              <div class="h-44 bg-neutral-100 overflow-hidden relative">
+                <img src="./images/team/2526_ho.png" alt="Henrique Botelho Oliveira" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="w-full h-full hidden items-center justify-center bg-neutral-100">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
               </div>
               <div class="p-5">
@@ -327,14 +346,15 @@
                 <h4 class="font-coolvetica text-base text-neutral-900">Henrique Botelho Oliveira</h4>
               </div>
             </div>
-            <div class="bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal" style="transition-delay:.1s">
-              <div class="h-44 bg-neutral-100 overflow-hidden">
-                <img src="" alt="Joana Margarida Silva Rego" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+
+            <div class="team-card bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal"
+                 data-instagram="https://www.instagram.com/joana.rego.xpc/"
+                 data-facebook="https://www.facebook.com/joana.rego.3551"
+                 style="transition-delay:.1s">
+              <div class="h-44 bg-neutral-100 overflow-hidden relative">
+                <img src="./images/team/2526_jr.png" alt="Joana Margarida Silva Rego" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="w-full h-full hidden items-center justify-center bg-neutral-100">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
               </div>
               <div class="p-5">
@@ -342,14 +362,14 @@
                 <h4 class="font-coolvetica text-base text-neutral-900">Joana Margarida Silva Rego</h4>
               </div>
             </div>
-            <div class="bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal" style="transition-delay:.15s">
-              <div class="h-44 bg-neutral-100 overflow-hidden">
-                <img src="" alt="Pedro Miguel da Costa Ferreira" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+
+            <div class="team-card bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal"
+                 data-instagram="https://www.instagram.com/pedroxinoca/"
+                 style="transition-delay:.15s">
+              <div class="h-44 bg-neutral-100 overflow-hidden relative">
+                <img src="./images/team/2526_pf.png" alt="Pedro Miguel da Costa Ferreira" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="w-full h-full hidden items-center justify-center bg-neutral-100">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
               </div>
               <div class="p-5">
@@ -357,14 +377,14 @@
                 <h4 class="font-coolvetica text-base text-neutral-900">Pedro Miguel da Costa Ferreira</h4>
               </div>
             </div>
-            <div class="bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal" style="transition-delay:.2s">
-              <div class="h-44 bg-neutral-100 overflow-hidden">
-                <img src="" alt="Miguel Oliveira Pacheco" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+
+            <div class="team-card bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal"
+                 data-instagram="https://www.instagram.com/miguel_oliveira_pacheco/"
+                 style="transition-delay:.2s">
+              <div class="h-44 bg-neutral-100 overflow-hidden relative">
+                <img src="./images/team/2526_mp.png" alt="Miguel Oliveira Pacheco" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="w-full h-full hidden items-center justify-center bg-neutral-100">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
               </div>
               <div class="p-5">
@@ -373,16 +393,17 @@
               </div>
             </div>
           </div>
+
           <!-- Vogais -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-6">
-            <div class="bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal" style="transition-delay:.05s">
-              <div class="h-44 bg-neutral-100 overflow-hidden">
-                <img src="" alt="Miguel Correia Medeiros" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-5 mb-6">
+            <div class="team-card bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal"
+                 data-facebook="https://www.facebook.com/miguel.medeiros.1806253"
+                 data-instagram="https://www.instagram.com/medeiros_oh/"
+                 style="transition-delay:.05s">
+              <div class="h-44 bg-neutral-100 overflow-hidden relative">
+                <img src="./images/team/2526_mm.png" alt="Miguel Correia Medeiros" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="w-full h-full hidden items-center justify-center bg-neutral-100">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
               </div>
               <div class="p-5">
@@ -390,14 +411,15 @@
                 <h4 class="font-coolvetica text-base text-neutral-900">Miguel Correia Medeiros</h4>
               </div>
             </div>
-            <div class="bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal" style="transition-delay:.1s">
-              <div class="h-44 bg-neutral-100 overflow-hidden">
+
+            <div class="team-card bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal"
+                 data-facebook="https://www.facebook.com/hernanifilipearaujo"
+                 data-instagram="https://www.instagram.com/araujohernani030/"
+                 style="transition-delay:.1s">
+              <div class="h-44 bg-neutral-100 overflow-hidden relative">
                 <img src="" alt="Hernâni Filipe Pacheco Araújo" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="w-full h-full hidden items-center justify-center bg-neutral-100">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
               </div>
               <div class="p-5">
@@ -405,14 +427,15 @@
                 <h4 class="font-coolvetica text-base text-neutral-900">Hernâni Filipe Pacheco Araújo</h4>
               </div>
             </div>
-            <div class="bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal" style="transition-delay:.15s">
-              <div class="h-44 bg-neutral-100 overflow-hidden">
+
+            <div class="team-card bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal"
+                 data-facebook="https://www.facebook.com/miguel.albernaz.9847"
+                 data-instagram="https://www.instagram.com/miguelalbernaz05/"
+                 style="transition-delay:.15s">
+              <div class="h-44 bg-neutral-100 overflow-hidden relative">
                 <img src="" alt="Miguel Alexandre Medeiros Albernaz" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="w-full h-full hidden items-center justify-center bg-neutral-100">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
               </div>
               <div class="p-5">
@@ -421,31 +444,32 @@
               </div>
             </div>
           </div>
+
           <!-- Colaboradores -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-5">
-            <div class="bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal" style="transition-delay:.05s">
-              <div class="h-36 bg-neutral-100 overflow-hidden">
-                <img src="" alt="Ema Moniz Botelho" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
+            <div class="team-card bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal"
+                 data-facebook="https://www.facebook.com/ema.mobo"
+                 data-instagram="https://www.instagram.com/ema.m.botelho/"
+                 style="transition-delay:.05s">
+              <div class="h-36 bg-neutral-100 overflow-hidden relative">
+                <img src="./images/team/2526_eb.png" alt="Ema Moniz Botelho" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="w-full h-full hidden items-center justify-center bg-neutral-100">
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
               </div>
               <div class="p-4">
-                <p class="font-coolvetica text-accent text-xs mb-1">Colaborador</p>
+                <p class="font-coolvetica text-accent text-xs mb-1">Colaboradora</p>
                 <h4 class="font-coolvetica text-sm text-neutral-900">Ema Moniz Botelho</h4>
               </div>
             </div>
-            <div class="bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal" style="transition-delay:.08s">
-              <div class="h-36 bg-neutral-100 overflow-hidden">
-                <img src="" alt="Rodrigo Miguel Carreiro Rodrigues" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+
+            <div class="team-card bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal"
+                 data-instagram="https://www.instagram.com/rodrigo_rodrigues.04/"
+                 style="transition-delay:.08s">
+              <div class="h-36 bg-neutral-100 overflow-hidden relative">
+                <img src="./images/team/2526_rr.png" alt="Rodrigo Miguel Carreiro Rodrigues" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="w-full h-full hidden items-center justify-center bg-neutral-100">
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
               </div>
               <div class="p-4">
@@ -453,81 +477,87 @@
                 <h4 class="font-coolvetica text-sm text-neutral-900">Rodrigo Carreiro Rodrigues</h4>
               </div>
             </div>
-            <div class="bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal" style="transition-delay:.11s">
-              <div class="h-36 bg-neutral-100 overflow-hidden">
+
+            <div class="team-card bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal"
+                 data-instagram="https://www.instagram.com/leticia.v.rosa/"
+                 data-facebook="https://www.facebook.com/profile.php?id=61552518119860"
+                 style="transition-delay:.11s">
+              <div class="h-36 bg-neutral-100 overflow-hidden relative">
                 <img src="" alt="Letícia Vieira Rosa" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="w-full h-full hidden items-center justify-center bg-neutral-100">
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
               </div>
               <div class="p-4">
-                <p class="font-coolvetica text-accent text-xs mb-1">Colaborador</p>
+                <p class="font-coolvetica text-accent text-xs mb-1">Colaboradora</p>
                 <h4 class="font-coolvetica text-sm text-neutral-900">Letícia Vieira Rosa</h4>
               </div>
             </div>
-            <div class="bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal" style="transition-delay:.14s">
-              <div class="h-36 bg-neutral-100 overflow-hidden">
+
+            <div class="team-card bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal"
+                 data-facebook="https://www.facebook.com/leticia.cordeiro.98284"
+                 data-instagram="https://www.instagram.com/leticia_cordeiro_05/"
+                 style="transition-delay:.14s">
+              <div class="h-36 bg-neutral-100 overflow-hidden relative">
                 <img src="" alt="Letícia Pedro Cordeiro" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="w-full h-full hidden items-center justify-center bg-neutral-100">
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
               </div>
               <div class="p-4">
-                <p class="font-coolvetica text-accent text-xs mb-1">Colaborador</p>
+                <p class="font-coolvetica text-accent text-xs mb-1">Colaboradora</p>
                 <h4 class="font-coolvetica text-sm text-neutral-900">Letícia Pedro Cordeiro</h4>
               </div>
             </div>
-            <div class="bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal" style="transition-delay:.17s">
-              <div class="h-36 bg-neutral-100 overflow-hidden">
+
+            <div class="team-card bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal"
+                 data-facebook="https://www.facebook.com/teresa.barcelos.77"
+                 data-instagram="https://www.instagram.com/_teh.teh/"
+                 style="transition-delay:.17s">
+              <div class="h-36 bg-neutral-100 overflow-hidden relative">
                 <img src="" alt="Teresa Ferreira Barcelos" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="w-full h-full hidden items-center justify-center bg-neutral-100">
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
               </div>
               <div class="p-4">
-                <p class="font-coolvetica text-accent text-xs mb-1">Colaborador</p>
+                <p class="font-coolvetica text-accent text-xs mb-1">Colaboradora</p>
                 <h4 class="font-coolvetica text-sm text-neutral-900">Teresa Ferreira Barcelos</h4>
               </div>
             </div>
-            <div class="bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal" style="transition-delay:.2s">
-              <div class="h-36 bg-neutral-100 overflow-hidden">
+
+            <div class="team-card bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal"
+                 data-facebook="https://www.facebook.com/natacha.faria.18"
+                 data-instagram="https://www.instagram.com/natacha_faria005/"
+                 style="transition-delay:.2s">
+              <div class="h-36 bg-neutral-100 overflow-hidden relative">
                 <img src="" alt="Natacha Moniz Faria" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="w-full h-full hidden items-center justify-center bg-neutral-100">
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
               </div>
               <div class="p-4">
-                <p class="font-coolvetica text-accent text-xs mb-1">Colaborador</p>
+                <p class="font-coolvetica text-accent text-xs mb-1">Colaboradora</p>
                 <h4 class="font-coolvetica text-sm text-neutral-900">Natacha Moniz Faria</h4>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Mesa de Plenário -->
         <div>
           <h3 class="font-ethnocentric text-xl text-neutral-700 mb-8 flex items-center gap-3 reveal">
             <span class="w-2 h-2 rounded-full bg-accent"></span> Mesa de Plenário
           </h3>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-3xl">
-            <div class="bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal" style="transition-delay:.05s">
-              <div class="h-44 bg-neutral-100 overflow-hidden">
-                <img src="" alt="Pedro Miguel Fonseca Anselmo" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-5 max-w-3xl">
+            <div class="team-card bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal"
+                 data-facebook="https://www.facebook.com/pedroanselmo30"
+                 data-instagram="https://www.instagram.com/pedroanselmo30/"
+                 style="transition-delay:.05s">
+              <div class="h-44 bg-neutral-100 overflow-hidden relative">
+                <img src="./images/team/2526_pa.png" alt="Pedro Miguel Fonseca Anselmo" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="w-full h-full hidden items-center justify-center bg-neutral-100">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
               </div>
               <div class="p-5">
@@ -535,14 +565,15 @@
                 <h4 class="font-coolvetica text-base text-neutral-900">Pedro Miguel Fonseca Anselmo</h4>
               </div>
             </div>
-            <div class="bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal" style="transition-delay:.1s">
-              <div class="h-44 bg-neutral-100 overflow-hidden">
-                <img src="" alt="João Sousa Melo Machado" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+
+            <div class="team-card bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal"
+                 data-facebook="https://www.facebook.com/profile.php?id=100005564506350"
+                 data-instagram="https://www.instagram.com/joao_machado5/"
+                 style="transition-delay:.1s">
+              <div class="h-44 bg-neutral-100 overflow-hidden relative">
+                <img src="./images/team/2526_jm.png" alt="João Sousa Melo Machado" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="w-full h-full hidden items-center justify-center bg-neutral-100">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
               </div>
               <div class="p-5">
@@ -550,14 +581,14 @@
                 <h4 class="font-coolvetica text-base text-neutral-900">João Sousa Melo Machado</h4>
               </div>
             </div>
-            <div class="bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal" style="transition-delay:.15s">
-              <div class="h-44 bg-neutral-100 overflow-hidden">
-                <img src="" alt="Tomás de Mendonça Moreira" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+
+            <div class="team-card bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all shadow-sm reveal"
+                 data-instagram="https://www.instagram.com/tomas_moreira47/"
+                 style="transition-delay:.15s">
+              <div class="h-44 bg-neutral-100 overflow-hidden relative">
+                <img src="./images/team/2526_tm.png" alt="Tomás de Mendonça Moreira" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="w-full h-full hidden items-center justify-center bg-neutral-100">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
               </div>
               <div class="p-5">
@@ -569,10 +600,10 @@
         </div>
       </div>
     </section>
+
     <section id="contatos" class="bg-white py-28 relative overflow-hidden">
       <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--accent)] rounded-full blur-[200px] opacity-[0.04] pointer-events-none"></div>
       <div class="container mx-auto px-6 max-w-6xl relative z-10">
-        <!-- Header -->
         <div class="mb-16 reveal">
           <p class="font-ethnocentric text-accent text-[10px] tracking-[0.5em] mb-4 uppercase">Fala Connosco</p>
           <h2 class="font-ethnocentric text-4xl md:text-6xl text-neutral-900 leading-none mb-4">Contactos</h2>
@@ -583,10 +614,7 @@
             <div class="space-y-5 mb-12">
               <div class="flex items-center gap-5 group/c">
                 <div class="w-12 h-12 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 group-hover/c:bg-accent group-hover/c:border-accent transition-all shadow-sm">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 </div>
                 <div>
                   <p class="font-ethnocentric text-xs text-accent uppercase tracking-widest mb-0.5" style="opacity:.7">Localização</p>
@@ -596,10 +624,7 @@
               </div>
               <div class="flex items-center gap-5 group/c">
                 <div class="w-12 h-12 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 group-hover/c:bg-accent group-hover/c:border-accent transition-all shadow-sm">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">
-                    <path d="m22 2-7 20-4-9-9-4Z" />
-                    <path d="M22 2 11 13" />
-                  </svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
                 </div>
                 <div>
                   <p class="font-ethnocentric text-xs text-accent uppercase tracking-widest mb-0.5" style="opacity:.7">Email</p>
@@ -610,33 +635,11 @@
             <div>
               <p class="font-ethnocentric text-xs text-neutral-400 uppercase tracking-widest mb-4">Redes Sociais</p>
               <div class="flex gap-3 flex-wrap">
-                <a href="https://facebook.com/nestiuac" target="_blank" class="w-11 h-11 rounded-full bg-white border border-neutral-200 flex items-center justify-center hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white text-neutral-400 transition-all shadow-sm">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M12 2.03998C6.5 2.03998 2 6.52998 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.84998C10.44 7.33998 11.93 5.95998 14.22 5.95998C15.31 5.95998 16.45 6.14998 16.45 6.14998V8.61998H15.19C13.95 8.61998 13.56 9.38998 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C18.34 21.21 22 17.06 22 12.06C22 6.52998 17.5 2.03998 12 2.03998Z" />
-                  </svg>
-                </a>
-                <a href="https://instagram.com/nestiuac" target="_blank" class="w-11 h-11 rounded-full bg-white border border-neutral-200 flex items-center justify-center hover:bg-[#E1306C] hover:border-[#E1306C] hover:text-white text-neutral-400 transition-all shadow-sm">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd" d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
-                    <path d="M18 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                    <path fill-rule="evenodd" d="M1 10.6C1 7.24 1 5.56 1.654 4.276c.575-1.129 1.493-2.047 2.622-2.622C5.56 1 7.24 1 10.6 1h2.8C16.76 1 18.44 1 19.724 1.654c1.129.575 2.047 1.493 2.622 2.622C23 5.56 23 7.24 23 10.6v2.8c0 3.36 0 5.04-.654 6.324a6 6 0 0 1-2.622 2.622C18.44 23 16.76 23 13.4 23h-2.8c-3.36 0-5.04 0-6.324-.654a6 6 0 0 1-2.622-2.622C1 18.44 1 16.76 1 13.4v-2.8zM10.6 3h2.8c1.713 0 2.878.002 3.778.075.878.072 1.326.201 1.638.364a4 4 0 0 1 1.748 1.748c.163.312.292.76.364 1.638C20.998 7.722 21 8.887 21 10.6v2.8c0 1.713-.002 2.878-.075 3.778-.072.878-.201 1.326-.364 1.638a4 4 0 0 1-1.748 1.748c-.312.163-.76.292-1.638.364C16.278 20.998 15.113 21 13.4 21h-2.8c-1.713 0-2.878-.002-3.778-.075-.878-.072-1.326-.201-1.638-.364a4 4 0 0 1-1.748-1.748c-.163-.312-.292-.76-.364-1.638C3.002 16.278 3 15.113 3 13.4v-2.8c0-1.713.002-2.878.075-3.778.072-.878.201-1.326.364-1.638a4 4 0 0 1 1.748-1.748c.312-.163.76-.292 1.638-.364C7.722 3.002 8.887 3 10.6 3z" />
-                  </svg>
-                </a>
-                <a href="https://www.youtube.com/user/UACNesti" target="_blank" class="w-11 h-11 rounded-full bg-white border border-neutral-200 flex items-center justify-center hover:bg-[#FF0000] hover:border-[#FF0000] hover:text-white text-neutral-400 transition-all shadow-sm">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z" />
-                  </svg>
-                </a>
-                <a href="https://twitter.com/Nestiuac" target="_blank" class="w-11 h-11 rounded-full bg-white border border-neutral-200 flex items-center justify-center hover:bg-black hover:border-black hover:text-white text-neutral-400 transition-all shadow-sm">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
-                </a>
-                <a href="https://www.twitch.tv/playnesti" target="_blank" class="w-11 h-11 rounded-full bg-white border border-neutral-200 flex items-center justify-center hover:bg-[#9146FF] hover:border-[#9146FF] hover:text-white text-neutral-400 transition-all shadow-sm">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z" />
-                  </svg>
-                </a>
+                <a href="https://facebook.com/nestiuac" target="_blank" class="w-11 h-11 rounded-full bg-white border border-neutral-200 flex items-center justify-center hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white text-neutral-400 transition-all shadow-sm"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.03998C6.5 2.03998 2 6.52998 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.84998C10.44 7.33998 11.93 5.95998 14.22 5.95998C15.31 5.95998 16.45 6.14998 16.45 6.14998V8.61998H15.19C13.95 8.61998 13.56 9.38998 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C18.34 21.21 22 17.06 22 12.06C22 6.52998 17.5 2.03998 12 2.03998Z"/></svg></a>
+                <a href="https://instagram.com/nestiuac" target="_blank" class="w-11 h-11 rounded-full bg-white border border-neutral-200 flex items-center justify-center hover:bg-[#E1306C] hover:border-[#E1306C] hover:text-white text-neutral-400 transition-all shadow-sm"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M18 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/><path fill-rule="evenodd" d="M1 10.6C1 7.24 1 5.56 1.654 4.276a6 6 0 0 1 2.622-2.622C5.56 1 7.24 1 10.6 1h2.8c3.36 0 5.04 0 6.324.654a6 6 0 0 1 2.622 2.622C23 5.56 23 7.24 23 10.6v2.8c0 3.36 0 5.04-.654 6.324a6 6 0 0 1-2.622 2.622C18.44 23 16.76 23 13.4 23h-2.8c-3.36 0-5.04 0-6.324-.654a6 6 0 0 1-2.622-2.622C1 18.44 1 16.76 1 13.4v-2.8zM10.6 3h2.8c1.713 0 2.878.002 3.778.075.878.072 1.326.201 1.638.364a4 4 0 0 1 1.748 1.748c.163.312.292.76.364 1.638C20.998 7.722 21 8.887 21 10.6v2.8c0 1.713-.002 2.878-.075 3.778-.072.878-.201 1.326-.364 1.638a4 4 0 0 1-1.748 1.748c-.312.163-.76.292-1.638.364C16.278 20.998 15.113 21 13.4 21h-2.8c-1.713 0-2.878-.002-3.778-.075-.878-.072-1.326-.201-1.638-.364a4 4 0 0 1-1.748-1.748c-.163-.312-.292-.76-.364-1.638C3.002 16.278 3 15.113 3 13.4v-2.8c0-1.713.002-2.878.075-3.778.072-.878.201-1.326.364-1.638a4 4 0 0 1 1.748-1.748c.312-.163.76-.292 1.638-.364C7.722 3.002 8.887 3 10.6 3z"/></svg></a>
+                <a href="https://www.youtube.com/user/UACNesti" target="_blank" class="w-11 h-11 rounded-full bg-white border border-neutral-200 flex items-center justify-center hover:bg-[#FF0000] hover:border-[#FF0000] hover:text-white text-neutral-400 transition-all shadow-sm"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/></svg></a>
+                <a href="https://twitter.com/Nestiuac" target="_blank" class="w-11 h-11 rounded-full bg-white border border-neutral-200 flex items-center justify-center hover:bg-black hover:border-black hover:text-white text-neutral-400 transition-all shadow-sm"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                <a href="https://www.twitch.tv/playnesti" target="_blank" class="w-11 h-11 rounded-full bg-white border border-neutral-200 flex items-center justify-center hover:bg-[#9146FF] hover:border-[#9146FF] hover:text-white text-neutral-400 transition-all shadow-sm"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg></a>
               </div>
             </div>
           </div>
@@ -651,85 +654,97 @@
         </div>
       </div>
     </section>
+
     <footer class="bg-neutral-100 border-t border-neutral-200 py-10 text-center">
       <p class="font-ethnocentric text-neutral-300 text-[10px] mt-3 tracking-widest">© <span id="footer-year"></span> NESTI UAc</p>
+      <p class="font-coolvetica text-neutral-300 text-[10px] mt-3">© Miguel Brás</p>
     </footer>
+
     <!--© Miguel Brás-->
     <script>
       document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+      // ── Nav ──
       const toggle = document.getElementById('menu-toggle');
       const menu = document.getElementById('menu');
       const header = document.getElementById('site-header');
       const menuIcon = document.getElementById('menu-icon');
-      const openMenu = () => {
-        menu.classList.add('mobile-open');
-        menu.classList.remove('hidden');
-        header.classList.add('is-open');
-        toggle.setAttribute('aria-expanded', 'true');
-        menuIcon.textContent = '✕';
-      };
-      const closeMenu = () => {
-        menu.classList.remove('mobile-open');
-        menu.classList.add('hidden');
-        header.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-        menuIcon.textContent = '☰';
-      };
+      const openMenu = () => { menu.classList.add('mobile-open'); menu.classList.remove('hidden'); header.classList.add('is-open'); toggle.setAttribute('aria-expanded', 'true'); menuIcon.textContent = '✕'; };
+      const closeMenu = () => { menu.classList.remove('mobile-open'); menu.classList.add('hidden'); header.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); menuIcon.textContent = '☰'; };
       if (toggle) {
-        toggle.addEventListener('click', e => {
-          e.stopPropagation();
-          menu.classList.contains('mobile-open') ? closeMenu() : openMenu();
-        });
-        document.addEventListener('pointerdown', ev => {
-          if (window.innerWidth >= 768) return;
-          if (!ev.target.closest('#menu') && !ev.target.closest('#menu-toggle')) closeMenu();
-        });
+        toggle.addEventListener('click', e => { e.stopPropagation(); menu.classList.contains('mobile-open') ? closeMenu() : openMenu(); });
+        document.addEventListener('pointerdown', ev => { if (window.innerWidth >= 768) return; if (!ev.target.closest('#menu') && !ev.target.closest('#menu-toggle')) closeMenu(); });
         menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setTimeout(closeMenu, 50)));
-        document.addEventListener('keydown', ev => {
-          if (ev.key === 'Escape') closeMenu();
-        });
+        document.addEventListener('keydown', ev => { if (ev.key === 'Escape') closeMenu(); });
       }
 
+      // ── Reveal on scroll ──
       const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            io.unobserve(e.target);
-          }
-        });
-      }, {
-        threshold: 0.12
-      });
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
       document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+      // ── Sobre slider ──
       (function() {
         const slides = document.querySelectorAll('.sobre-slide');
         const placeholder = document.querySelector('.sobre-placeholder');
         let current = 0;
         const hasSrc = Array.from(slides).some(s => s.querySelector('img').getAttribute('src'));
         if (placeholder) placeholder.style.display = hasSrc ? 'none' : 'flex';
-
-        function next() {
-          slides[current].style.opacity = '0';
-          current = (current + 1) % slides.length;
-          slides[current].style.opacity = '1';
-        }
+        function next() { slides[current].style.opacity = '0'; current = (current + 1) % slides.length; slides[current].style.opacity = '1'; }
         setInterval(next, 4000);
       })();
 
+      // ── Lidet slider ──
       (function() {
         const slides = document.querySelectorAll('.lidet-slide');
         const placeholder = document.querySelector('.lidet-placeholder');
         let current = 0;
         const hasSrc = Array.from(slides).some(s => s.querySelector('img').getAttribute('src'));
         if (placeholder) placeholder.style.display = hasSrc ? 'none' : 'flex';
-
-        function next() {
-          slides[current].style.opacity = '0';
-          current = (current + 1) % slides.length;
-          slides[current].style.opacity = '1';
-        }
+        function next() { slides[current].style.opacity = '0'; current = (current + 1) % slides.length; slides[current].style.opacity = '1'; }
         setInterval(next, 4500);
+      })();
+
+      // ── Team card social overlays ──
+      (function() {
+        const FB_SVG = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34v7C18.34 21.21 22 17.06 22 12.06 22 6.5 17.5 2 12 2z"/></svg>`;
+        const IG_SVG = `<svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><circle cx="18" cy="6" r="1.2"/><path fill-rule="evenodd" d="M1 10.6C1 7.24 1 5.56 1.654 4.276A6 6 0 0 1 4.276 1.654C5.56 1 7.24 1 10.6 1h2.8c3.36 0 5.04 0 6.324.654a6 6 0 0 1 2.622 2.622C23 5.56 23 7.24 23 10.6v2.8c0 3.36 0 5.04-.654 6.324a6 6 0 0 1-2.622 2.622C18.44 23 16.76 23 13.4 23h-2.8c-3.36 0-5.04 0-6.324-.654a6 6 0 0 1-2.622-2.622C1 18.44 1 16.76 1 13.4v-2.8zM10.6 3h2.8c1.713 0 2.878.002 3.778.075.878.072 1.326.201 1.638.364a4 4 0 0 1 1.748 1.748c.163.312.292.76.364 1.638C21 7.722 21 8.887 21 10.6v2.8c0 1.713-.002 2.878-.075 3.778-.072.878-.201 1.326-.364 1.638a4 4 0 0 1-1.748 1.748c-.312.163-.76.292-1.638.364C16.278 21 15.113 21 13.4 21h-2.8c-1.713 0-2.878-.002-3.778-.075-.878-.072-1.326-.201-1.638-.364a4 4 0 0 1-1.748-1.748c-.163-.312-.292-.76-.364-1.638C3 16.278 3 15.113 3 13.4v-2.8c0-1.713.002-2.878.075-3.778.072-.878.201-1.326.364-1.638a4 4 0 0 1 1.748-1.748c.312-.163.76-.292 1.638-.364C7.722 3 8.887 3 10.6 3z"/></svg>`;
+
+        document.querySelectorAll('.team-card').forEach(card => {
+          const fb = card.dataset.facebook;
+          const ig = card.dataset.instagram;
+          if (!fb && !ig) return;
+
+          const imgBox = card.querySelector('.h-44, .h-36');
+          if (!imgBox) return;
+
+          const overlay = document.createElement('div');
+          overlay.className = 'social-overlay';
+
+          if (fb) {
+            const a = document.createElement('a');
+            a.href = fb;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.className = 'social-btn fb';
+            a.title = 'Facebook';
+            a.innerHTML = FB_SVG;
+            overlay.appendChild(a);
+          }
+          if (ig) {
+            const a = document.createElement('a');
+            a.href = ig;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.className = 'social-btn ig';
+            a.title = 'Instagram';
+            a.innerHTML = IG_SVG;
+            overlay.appendChild(a);
+          }
+
+          imgBox.appendChild(overlay);
+        });
       })();
     </script>
   </body>
