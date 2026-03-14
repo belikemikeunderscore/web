@@ -1217,18 +1217,18 @@
             </div>
           </div>
           <div class="bg-white p-8 rounded-3xl shadow-2xl border border-neutral-100">
-            <form action="#" method="POST" class="space-y-4">
+            <form action="#" method="POST" class="space-y-4" id="contact-form">
               <div>
                 <label class="block font-ethnocentric text-xs mb-2 text-neutral-600">Nome</label>
-                <input type="text" placeholder="O teu nome" class="w-full px-4 py-3 rounded-xl bg-neutral-100 border-transparent focus:border-red-600 focus:bg-white focus:ring-0 transition-all font-coolvetica">
+                <input type="text" placeholder="O teu nome" class="w-full px-4 py-3 rounded-xl bg-neutral-100 border-transparent focus:border-red-600 focus:bg-white focus:ring-0 transition-all font-coolvetica" id="name">
               </div>
               <div>
                 <label class="block font-ethnocentric text-xs mb-2 text-neutral-600">Email</label>
-                <input type="email" placeholder="oteu@email.com" class="w-full px-4 py-3 rounded-xl bg-neutral-100 border-transparent focus:border-red-600 focus:bg-white focus:ring-0 transition-all font-coolvetica">
+                <input type="email" placeholder="oteu@email.com" class="w-full px-4 py-3 rounded-xl bg-neutral-100 border-transparent focus:border-red-600 focus:bg-white focus:ring-0 transition-all font-coolvetica" id="email">
               </div>
               <div>
                 <label class="block font-ethnocentric text-xs mb-2 text-neutral-600">Mensagem</label>
-                <textarea rows="4" placeholder="Como podemos ajudar?" class="w-full px-4 py-3 rounded-xl bg-neutral-100 border-transparent focus:border-red-600 focus:bg-white focus:ring-0 transition-all font-coolvetica"></textarea>
+                <textarea rows="4" placeholder="Como podemos ajudar?" class="w-full px-4 py-3 rounded-xl bg-neutral-100 border-transparent focus:border-red-600 focus:bg-white focus:ring-0 transition-all font-coolvetica" id="message"></textarea>
               </div>
               <button type="submit" class="w-full bg-gradient-to-tr from-red-600 to-red-900 text-white font-ethnocentric py-4 rounded-xl shadow-lg hover:brightness-110 transition-all"> Enviar Mensagem </button>
             </form>
@@ -1241,171 +1241,235 @@
       <p class="font-coolvetica text-gray-900 mt-2 text-xs">© Miguel Brás</p>
     </footer>
     <script>
-      document.getElementById('footer-year').textContent = new Date().getFullYear();
-      document.addEventListener('DOMContentLoaded', () => {
-        // Cache DOM elements to avoid repeated queries
-        const menuToggle = document.getElementById('menu-toggle');
-        const menu = document.getElementById('menu');
-        const header = document.getElementById('site-header');
-        const menuIcon = document.getElementById('menu-icon');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImage = document.getElementById('lightbox-image');
-        const lightboxTitle = document.getElementById('lightbox-title');
-        const lightboxClose = document.getElementById('lightbox-close');
-        const cards = document.querySelectorAll('.tournament-card');
-        
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-        const track = document.getElementById('marquee-track');
-        if (track) {
-          const parent = track.parentElement;
-          const maxIterations = 10;
-          let iterations = 0;
-          
-          const cloneMarqueeContent = () => {
-            const targetWidth = window.innerWidth * 2;
-            
-            while (track.scrollWidth < targetWidth && iterations < maxIterations) {
-              const items = Array.from(track.children);
-              items.forEach(item => {
-                const clone = item.cloneNode(true);
-                track.appendChild(clone);
-              });
-              iterations++;
-            }
-            
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    const header = document.getElementById('site-header');
+    const menuIcon = document.getElementById('menu-icon');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const cards = document.querySelectorAll('.tournament-card');
 
-            if (track.children.length > 0) {
-              const clone = track.cloneNode(true);
-              clone.setAttribute('aria-hidden', 'true');
-              clone.style.cssText = 'position:absolute;left:100%;top:0;';
-              parent.style.position = 'relative';
-              parent.appendChild(clone);
-            }
-          };
-          
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-          if (document.readyState === 'complete') {
-            cloneMarqueeContent();
-          } else {
-            window.addEventListener('load', cloneMarqueeContent);
-          }
+        const name    = document.getElementById('name').value.trim();
+        const email   = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (!name || !email || !message) {
+          showToast('Campos em falta', 'Por favor, preenche todos os campos antes de enviar.', 'warning');
+          return;
         }
-        
-
-        if (menuToggle && menu && header) {
-          let isMenuOpen = false;
-          
-          const openMenu = () => {
-            if (isMenuOpen) return;
-            isMenuOpen = true;
-            menu.classList.add('mobile-open');
-            menu.classList.remove('hidden');
-            header.classList.add('is-open');
-            menuToggle.setAttribute('aria-expanded', 'true');
-            if (menuIcon) menuIcon.textContent = '✕';
-          };
-          
-          const closeMenu = () => {
-            if (!isMenuOpen) return;
-            isMenuOpen = false;
-            menu.classList.remove('mobile-open');
-            menu.classList.add('hidden');
-            header.classList.remove('is-open');
-            menuToggle.setAttribute('aria-expanded', 'false');
-            if (menuIcon) menuIcon.textContent = '☰';
-          };
-          
-          menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            isMenuOpen ? closeMenu() : openMenu();
-          });
-          
-
-          document.addEventListener('pointerdown', (ev) => {
-            if (window.innerWidth >= 768) return;
-            const inside = ev.target.closest('#menu') || ev.target.closest('#menu-toggle');
-            if (!inside) closeMenu();
-          }, { passive: true });
-          
-
-          const menuLinks = menu.querySelectorAll('a[href]');
-          menuLinks.forEach(a => {
-            a.addEventListener('click', () => setTimeout(closeMenu, 50));
-          });
-          
-
-          document.addEventListener('keydown', ev => {
-            if (ev.key === 'Escape') {
-              closeMenu();
-              closeCards();
-            }
-          });
+        if (!/\S+@\S+\.\S+/.test(email)) {
+          showToast('Email inválido', 'Por favor, insere um endereço de email válido.', 'warning');
+          return;
         }
-        
+        if (message.length < 10) {
+          showToast('Mensagem muito curta', 'A mensagem deve conter pelo menos 10 caracteres.', 'warning');
+          return;
+        }
+        if (message.length > 1000) {
+          showToast('Mensagem muito longa', 'Por favor, limita a mensagem a 1000 caracteres.', 'warning');
+          return;
+        }
 
-        const closeCards = () => {
-          cards.forEach(c => c.classList.remove('is-active'));
-        };
-        
-        const onPointer = (e) => {
-          const isMobile = window.innerWidth < 1024;
-          if (!isMobile) return;
-          if (e.target.closest('#menu') || e.target.closest('#menu-toggle')) return;
-          
-          const clickedCard = e.target.closest('.tournament-card');
-          if (clickedCard) {
-            if (clickedCard.classList.contains('is-active')) {
-              return;
-            }
-            closeCards();
-            clickedCard.classList.add('is-active');
-            e.preventDefault();
-            e.stopPropagation();
-            return;
-          }
-          closeCards();
-        };
-        
-        document.addEventListener('pointerdown', onPointer, { passive: false });
-        
-
-        if (lightbox && lightboxImage && lightboxTitle) {
-          const openLightbox = (imageSrc, title) => {
-            lightboxImage.src = imageSrc;
-            lightboxTitle.textContent = title;
-            lightbox.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-          };
-          
-          const closeLightbox = () => {
-            lightbox.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-          };
-          
-
-          const galleryContainer = document.querySelector('#galeria');
-          if (galleryContainer) {
-            galleryContainer.addEventListener('click', (e) => {
-              const item = e.target.closest('.gallery-item');
-              if (item) {
-                openLightbox(item.dataset.image, item.dataset.title);
-              }
-            });
-          }
-          
-
-          if (lightboxClose) {
-            lightboxClose.addEventListener('click', closeLightbox);
-          }
-          
-          lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-              closeLightbox();
-            }
+        try {
+          const res = await fetch('https://contact.miguel-bras06.workers.dev/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, message }),
           });
+          if (!res.ok) throw new Error();
+          showToast('Mensagem enviada!', 'Respondemos o mais breve possível. — NESTIUAC', 'success');
+          form.reset();
+        } catch {
+          showToast('Erro ao enviar', 'Tenta novamente ou contacta-nos diretamente.', 'error');
         }
       });
-    </script>
+    }
+
+    const track = document.getElementById('marquee-track');
+    if (track) {
+      const parent = track.parentElement;
+      const maxIterations = 10;
+      let iterations = 0;
+      const cloneMarqueeContent = () => {
+        const targetWidth = window.innerWidth * 2;
+        while (track.scrollWidth < targetWidth && iterations < maxIterations) {
+          Array.from(track.children).forEach(item => track.appendChild(item.cloneNode(true)));
+          iterations++;
+        }
+        if (track.children.length > 0) {
+          const clone = track.cloneNode(true);
+          clone.setAttribute('aria-hidden', 'true');
+          clone.style.cssText = 'position:absolute;left:100%;top:0;';
+          parent.style.position = 'relative';
+          parent.appendChild(clone);
+        }
+      };
+      document.readyState === 'complete' ? cloneMarqueeContent() : window.addEventListener('load', cloneMarqueeContent);
+    }
+
+    if (menuToggle && menu && header) {
+      let isMenuOpen = false;
+      const openMenu = () => {
+        if (isMenuOpen) return;
+        isMenuOpen = true;
+        menu.classList.add('mobile-open');
+        menu.classList.remove('hidden');
+        header.classList.add('is-open');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        if (menuIcon) menuIcon.textContent = '✕';
+      };
+      const closeMenu = () => {
+        if (!isMenuOpen) return;
+        isMenuOpen = false;
+        menu.classList.remove('mobile-open');
+        menu.classList.add('hidden');
+        header.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        if (menuIcon) menuIcon.textContent = '☰';
+      };
+      menuToggle.addEventListener('click', (e) => { e.stopPropagation(); isMenuOpen ? closeMenu() : openMenu(); });
+      document.addEventListener('pointerdown', (ev) => {
+        if (window.innerWidth >= 768) return;
+        if (!ev.target.closest('#menu') && !ev.target.closest('#menu-toggle')) closeMenu();
+      }, { passive: true });
+      menu.querySelectorAll('a[href]').forEach(a => a.addEventListener('click', () => setTimeout(closeMenu, 50)));
+      document.addEventListener('keydown', ev => { if (ev.key === 'Escape') { closeMenu(); closeCards(); } });
+    }
+
+    const closeCards = () => cards.forEach(c => c.classList.remove('is-active'));
+    document.addEventListener('pointerdown', (e) => {
+      if (window.innerWidth >= 1024) return;
+      if (e.target.closest('#menu') || e.target.closest('#menu-toggle')) return;
+      const clickedCard = e.target.closest('.tournament-card');
+      if (clickedCard) {
+        if (!clickedCard.classList.contains('is-active')) {
+          closeCards();
+          clickedCard.classList.add('is-active');
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        return;
+      }
+      closeCards();
+    }, { passive: false });
+
+    if (lightbox && lightboxImage && lightboxTitle) {
+      const openLightbox = (src, title) => { lightboxImage.src = src; lightboxTitle.textContent = title; lightbox.classList.remove('hidden'); document.body.style.overflow = 'hidden'; };
+      const closeLightbox = () => { lightbox.classList.add('hidden'); document.body.style.overflow = 'auto'; };
+      document.querySelector('#galeria')?.addEventListener('click', (e) => { const item = e.target.closest('.gallery-item'); if (item) openLightbox(item.dataset.image, item.dataset.title); });
+      lightboxClose?.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    }
+  });
+</script>
+    <style>
+  #pn-toast {
+    position: fixed; bottom: 32px; right: 32px; min-width: 280px;
+    background: #0a0a0a; border: 1px solid rgba(185,28,28,0.35);
+    border-radius: 16px; padding: 16px 20px;
+    display: flex; align-items: flex-start; gap: 14px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.55);
+    transform: translateY(120%) scale(0.95); opacity: 0;
+    transition: transform .45s cubic-bezier(.2,.9,.25,1), opacity .3s ease;
+    pointer-events: none; z-index: 9999;
+  }
+  #pn-toast.show { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+  .pn-toast-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(185,28,28,0.15); border: 1px solid rgba(185,28,28,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .pn-toast-title { font-family: var(--font-ethnocentric, monospace); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.9); margin: 0 0 4px; }
+  .pn-toast-msg { font-family: var(--font-coolvetica, sans-serif); font-size: 13px; color: rgba(255,255,255,.5); margin: 0; line-height: 1.5; }
+  .pn-toast-close { background: none; border: none; color: rgba(255,255,255,.3); cursor: pointer; font-size: 20px; line-height: 1; margin-top: -2px; }
+  .pn-toast-progress { position: absolute; bottom: 0; left: 16px; right: 16px; height: 2px; background: rgba(255,255,255,.06); border-radius: 2px; overflow: hidden; }
+  .pn-toast-bar { height: 100%; width: 100%; background: linear-gradient(90deg, #b91c1c, #ef4444); transform-origin: left; border-radius: 2px; }
+</style>
+
+<div id="pn-toast">
+  <div class="pn-toast-icon" id="pn-toast-icon">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>
+    </svg>
+  </div>
+  <div style="flex:1">
+    <p class="pn-toast-title" id="pn-toast-title"></p>
+    <p class="pn-toast-msg" id="pn-toast-msg"></p>
+  </div>
+  <button class="pn-toast-close" onclick="hidePNToast()">×</button>
+  <div class="pn-toast-progress"><div class="pn-toast-bar" id="pn-toast-bar"></div></div>
+</div>
+
+<script>
+  let _pnToastTimer = null;
+
+  function showToast(title, msg, type = 'success') {
+    const toast = document.getElementById('pn-toast');
+    const bar = document.getElementById('pn-toast-bar');
+    const iconEl = document.getElementById('pn-toast-icon');
+    const titleEl = document.getElementById('pn-toast-title');
+    const msgEl = document.getElementById('pn-toast-msg');
+
+    const styles = {
+      success: {
+        border: 'rgba(185,28,28,0.35)',
+        iconBg: 'rgba(185,28,28,0.15)',
+        iconBorder: 'rgba(185,28,28,0.3)',
+        bar: 'linear-gradient(90deg,#b91c1c,#ef4444)',
+        svg: `<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>`,
+        stroke: '#ef4444',
+      },
+      error: {
+        border: 'rgba(239,68,68,0.4)',
+        iconBg: 'rgba(239,68,68,0.15)',
+        iconBorder: 'rgba(239,68,68,0.3)',
+        bar: 'linear-gradient(90deg,#dc2626,#f87171)',
+        svg: `<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>`,
+        stroke: '#f87171',
+      },
+      warning: {
+        border: 'rgba(245,158,11,0.4)',
+        iconBg: 'rgba(245,158,11,0.15)',
+        iconBorder: 'rgba(245,158,11,0.3)',
+        bar: 'linear-gradient(90deg,#d97706,#fbbf24)',
+        svg: `<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>`,
+        stroke: '#fbbf24',
+      },
+    };
+
+    const s = styles[type] || styles.success;
+
+    toast.style.borderColor = s.border;
+    iconEl.style.background = s.iconBg;
+    iconEl.style.borderColor = s.iconBorder;
+    iconEl.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="${s.stroke}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${s.svg}</svg>`;
+    bar.style.background = s.bar;
+    titleEl.textContent = title;
+    msgEl.textContent = msg;
+
+    clearTimeout(_pnToastTimer);
+    bar.style.transition = 'none';
+    bar.style.transform = 'scaleX(1)';
+    toast.classList.add('show');
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      bar.style.transition = 'transform 4s linear';
+      bar.style.transform = 'scaleX(0)';
+    }));
+    _pnToastTimer = setTimeout(hidePNToast, 4000);
+  }
+
+  function hidePNToast() {
+    document.getElementById('pn-toast').classList.remove('show');
+  }
+
+  
+</script>
   </body>
 </html>
 <!--© Miguel Brás -->
